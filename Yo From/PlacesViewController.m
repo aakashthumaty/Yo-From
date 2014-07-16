@@ -126,24 +126,21 @@
     sentLabel.center = self.view.center;
     sentLabel.text = @"Yo From %@", [[places objectAtIndex:indexPath.row]objectForKey:@"name"];
     sentLabel.font = [UIFont systemFontOfSize:40.0];
-    
+    sentLabel.backgroundColor = [UIColor grayColor];
     sentLabel.textColor = [UIColor blackColor];
     sentLabel.textAlignment = NSTextAlignmentCenter;
     sentLabel.alpha = 0;
     [self.view addSubview:sentLabel];
     
-    sentLabel.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    sentLabel.alpha = 1;
-    [UIView animateWithDuration:0.7 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.4 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        sentLabel.transform = CGAffineTransformIdentity;
+        sentLabel.alpha = 1;
     } completion:^(BOOL finished){
-        [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
             
-            sentLabel.transform = CGAffineTransformMakeScale(0.0, 0.0);
-        } completion:^(BOOL finished){
             sentLabel.alpha = 0;
-           //go back here
+        } completion:^(BOOL finished){
+            [self dismissViewControllerAnimated:YES completion:nil];
         }];
         
     }];
