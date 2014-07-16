@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8ACED0BA-18AD-431F-87FD-5CACB521C58E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Yo From</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</key>
+		<string>https://github.com/aakashthumaty/Yo-From.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Yo From.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aakashthumaty/Yo-From.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Yo-From</string>
+		</dict>
+	</array>
+</dict>
+</plist>
