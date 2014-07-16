@@ -9,6 +9,7 @@
 #import "PlacesViewController.h"
 #import "UIImageView+WebCache.h"
 #import <Parse/Parse.h>
+#import "UsersViewController.h"
 @interface PlacesViewController ()
 
 @end
@@ -107,9 +108,6 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
-   // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
-    //[[self navigationController] pushViewController:chatVC animated:YES];
     
     // Create our Installation query
     PFQuery *pushQuery = [PFInstallation query];
@@ -118,13 +116,15 @@
     // Send push notification to query
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:pushQuery];
-    NSString *string = [NSString stringWithFormat:@"%@ @ %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"preferenceName"];
+    NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
 
     [push setMessage:string];
     [push sendPushInBackground];
     UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 300, 50)];
     sentLabel.center = self.view.center;
-    sentLabel.text = @"Yo From %@", [[places objectAtIndex:indexPath.row]objectForKey:@"name"];
+    sentLabel.text = @"Yo Sent!";
     sentLabel.font = [UIFont systemFontOfSize:40.0];
     
     sentLabel.textColor = [UIColor blackColor];
@@ -134,20 +134,20 @@
     
     sentLabel.transform = CGAffineTransformMakeScale(0.01, 0.01);
     sentLabel.alpha = 1;
-    [UIView animateWithDuration:0.7 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.4 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
         sentLabel.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished){
-        [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        [UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
             
             sentLabel.transform = CGAffineTransformMakeScale(0.0, 0.0);
         } completion:^(BOOL finished){
             sentLabel.alpha = 0;
-           //go back here
-        }];
-        
+         
+            [self dismissViewControllerAnimated:YES completion:nil];
     }];
-
+    }];
 }
 
 
