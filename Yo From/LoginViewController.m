@@ -60,6 +60,9 @@
     user[@"username"] = string;
     [user saveInBackground];
     
+        NSString *valueToSave = string;
+        [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:@"preferenceName"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     currentInstallation[@"username"] = string;
     [currentInstallation saveInBackground];

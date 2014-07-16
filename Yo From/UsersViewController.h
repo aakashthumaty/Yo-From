@@ -10,4 +10,6 @@
 
 @interface UsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
+@property (nonatomic, retain) NSString *username;
+
 @end

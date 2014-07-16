@@ -16,5 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *placesTableView;
 @property (nonatomic, retain) NSString *recipient;
+@property (nonatomic, retain) NSString *username;
 
 @end
