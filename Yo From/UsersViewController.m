@@ -42,6 +42,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)addFriend{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"Add Friend"
+                              message:@"Enter username"
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"Ok", nil];
+    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    UITextField *textField = [actionSheet textFieldAtIndex:0];
+    NSLog(@"textfield text: %@", textField.text);
+    [friends addObject:textField.text];
+
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
