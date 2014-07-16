@@ -135,12 +135,12 @@
     
     UILabel *label = (UILabel*) [cell viewWithTag:101];
     NSLog(@"friends: %@", friends);
-        if([friends count] > indexPath.row){
+    if([friends count] > indexPath.row){
         label.text = [friends objectAtIndex:indexPath.row];
     }
     
     if(indexPath.row == [friends count]){
-        
+        NSLog(@"adding add");
         label.text = @"+";
     }
 
