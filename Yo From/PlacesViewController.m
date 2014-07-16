@@ -42,6 +42,7 @@
     location = [locationManager location];
     
     places = [self fetchPlacesNearby];
+    [placesTableView reloadData];
     
 }
 
@@ -49,17 +50,10 @@
     float longitude = location.coordinate.longitude;
     float latitude = location.coordinate.latitude;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-%f,%f&radius=100&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",longitude,latitude]]];
-    NSLog(@"request: %@", [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-%f,%f&radius=100&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",longitude,latitude]);
-   __block NSMutableArray *results = [[NSMutableArray alloc]init];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-    
-        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        results = [[object objectForKey:@"results"]mutableCopy];
-        
-    }];
-    NSLog(@"results: %@", results);
-    return results.mutableCopy;
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=100&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",latitude,longitude]]];
+    id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    return [[object objectForKey:@"results"]mutableCopy];
+
 }
 
 #pragma mark - Table view data source
@@ -69,7 +63,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    if([places count] >= 9){
+        return 6;
+    }
+    else{
+        return [places count];
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
@@ -82,7 +81,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"PlaceCell";
+    static NSString *CellIdentifier = @"placeCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -94,7 +93,7 @@
     UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
     nameLabel.text = [[places objectAtIndex:indexPath.row]objectForKey:@"name"];
 
-    UIImageView *iconImage = (UIImageView *)[cell viewWithTag:100];
+    UIImageView *iconImage = (UIImageView *)[cell viewWithTag:102];
     iconImage.contentMode = UIViewContentModeScaleAspectFill;
     iconImage.clipsToBounds = YES;
     iconImage.layer.cornerRadius =  iconImage.frame.size.height / 2;
@@ -105,6 +104,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"send to %@ from %@", _recipients, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
    // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
     //[[self navigationController] pushViewController:chatVC animated:YES];

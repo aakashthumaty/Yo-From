@@ -117,7 +117,7 @@
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
-        [self presentViewController:placesVC animated:NO completion:nil];
+        [self presentViewController:placesVC animated:YES completion:nil];
         
 
     }
@@ -126,8 +126,6 @@
         [self addFriend];
     }
 
-    
-    //[[self navigationController] pushViewController:chatVC animated:YES];
 }
 
 
@@ -137,8 +135,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [[segue destinationViewController] setRecipients:friends];
 }
 
 
