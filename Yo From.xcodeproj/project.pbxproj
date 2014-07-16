@@ -34,8 +34,9 @@
 		07ADB07119765209002D80E0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB07019765209002D80E0 /* Security.framework */; };
 		07ADB07319765214002D80E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB07219765214002D80E0 /* SystemConfiguration.framework */; };
 		07ADB0751976521A002D80E0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB0741976521A002D80E0 /* StoreKit.framework */; };
-		07ADB0771976541E002D80E0 /* Parse 2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB0761976541E002D80E0 /* Parse 2.framework */; };
 		07ADB07A19765592002D80E0 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADB07919765592002D80E0 /* UserData.m */; };
+		07ADB08219765A4F002D80E0 /* Parse 2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB08119765A4F002D80E0 /* Parse 2.framework */; };
+		07ADB08419765AA6002D80E0 /* Parse 2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB08319765AA6002D80E0 /* Parse 2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,9 +81,10 @@
 		07ADB07019765209002D80E0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		07ADB07219765214002D80E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		07ADB0741976521A002D80E0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		07ADB0761976541E002D80E0 /* Parse 2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Parse 2.framework"; path = "../../../Downloads/Parse 2.framework"; sourceTree = "<group>"; };
 		07ADB07819765592002D80E0 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		07ADB07919765592002D80E0 /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
+		07ADB08119765A4F002D80E0 /* Parse 2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Parse 2.framework"; path = "../../.Trash/Parse 2.framework"; sourceTree = "<group>"; };
+		07ADB08319765AA6002D80E0 /* Parse 2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Parse 2.framework"; path = "../../Downloads/Parse 2.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,11 +98,12 @@
 				07ADB06F197651FC002D80E0 /* MobileCoreServices.framework in Frameworks */,
 				07ADB06D197651F5002D80E0 /* libz.1.1.3.dylib in Frameworks */,
 				07ADB06B197651E7002D80E0 /* CFNetwork.framework in Frameworks */,
+				07ADB08419765AA6002D80E0 /* Parse 2.framework in Frameworks */,
+				07ADB08219765A4F002D80E0 /* Parse 2.framework in Frameworks */,
 				07ADB069197651DF002D80E0 /* AudioToolbox.framework in Frameworks */,
 				07ADB067197651C7002D80E0 /* QuartzCore.framework in Frameworks */,
 				07ADB065197651BA002D80E0 /* Social.framework in Frameworks */,
 				07ADB063197651B2002D80E0 /* Accounts.framework in Frameworks */,
-				07ADB0771976541E002D80E0 /* Parse 2.framework in Frameworks */,
 				07ADB061197651A5002D80E0 /* CoreLocation.framework in Frameworks */,
 				07ADB02B19764F9F002D80E0 /* CoreGraphics.framework in Frameworks */,
 				07ADB02F19764F9F002D80E0 /* CoreData.framework in Frameworks */,
@@ -145,7 +148,8 @@
 		07ADB02719764F9F002D80E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				07ADB0761976541E002D80E0 /* Parse 2.framework */,
+				07ADB08319765AA6002D80E0 /* Parse 2.framework */,
+				07ADB08119765A4F002D80E0 /* Parse 2.framework */,
 				07ADB0741976521A002D80E0 /* StoreKit.framework */,
 				07ADB07219765214002D80E0 /* SystemConfiguration.framework */,
 				07ADB07019765209002D80E0 /* Security.framework */,
@@ -258,6 +262,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Aakash;
 				TargetAttributes = {
+					07ADB02419764F9F002D80E0 = {
+						DevelopmentTeam = 6K2U3WGB8U;
+					};
 					07ADB04419764F9F002D80E0 = {
 						TestTargetID = 07ADB02419764F9F002D80E0;
 					};
@@ -429,15 +436,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.EverHacks.YoFrom";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/aakash/Downloads,
+					/Users/aakash/.Trash,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
 				INFOPLIST_FILE = "Yo From/Yo From-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -447,15 +457,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.EverHacks.YoFrom";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/aakash/Downloads,
+					/Users/aakash/.Trash,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
 				INFOPLIST_FILE = "Yo From/Yo From-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
