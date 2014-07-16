@@ -357,7 +357,7 @@
 				ORGANIZATIONNAME = Aakash;
 				TargetAttributes = {
 					07ADB02419764F9F002D80E0 = {
-						DevelopmentTeam = 6K2U3WGB8U;
+						DevelopmentTeam = MRQT579S8E;
 					};
 					07ADB04419764F9F002D80E0 = {
 						TestTargetID = 07ADB02419764F9F002D80E0;
