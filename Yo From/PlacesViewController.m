@@ -50,7 +50,7 @@
     float longitude = location.coordinate.longitude;
     float latitude = location.coordinate.latitude;
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=100&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",latitude,longitude]]];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=500&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",latitude,longitude]]];
     id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     return [[object objectForKey:@"results"]mutableCopy];
 
