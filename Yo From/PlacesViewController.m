@@ -129,22 +129,16 @@
     
     sentLabel.textColor = [UIColor blackColor];
     sentLabel.textAlignment = NSTextAlignmentCenter;
-    sentLabel.alpha = 0;
+    sentLabel.alpha = 0.f;
     [self.view addSubview:sentLabel];
-    
-    sentLabel.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateWithDuration:0.4 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        sentLabel.alpha = 1;
-
-    } completion:^(BOOL finished){
-        
-        [UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            sentLabel.alpha = 0;
-
-        } completion:^(BOOL finished){
-         
+        [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [sentLabel setAlpha:1.f];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2f delay:0.3f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [sentLabel setAlpha:0.f];
+        } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:YES completion:nil];
-    }];
+        }];
     }];
 }
 
