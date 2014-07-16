@@ -122,6 +122,32 @@
 
     [push setMessage:string];
     [push sendPushInBackground];
+    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 300, 50)];
+    sentLabel.center = self.view.center;
+    sentLabel.text = @"Yo From %@", [[places objectAtIndex:indexPath.row]objectForKey:@"name"];
+    sentLabel.font = [UIFont systemFontOfSize:40.0];
+    
+    sentLabel.textColor = [UIColor blackColor];
+    sentLabel.textAlignment = NSTextAlignmentCenter;
+    sentLabel.alpha = 0;
+    [self.view addSubview:sentLabel];
+    
+    sentLabel.transform = CGAffineTransformMakeScale(0.01, 0.01);
+    sentLabel.alpha = 1;
+    [UIView animateWithDuration:0.7 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        sentLabel.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            sentLabel.transform = CGAffineTransformMakeScale(0.0, 0.0);
+        } completion:^(BOOL finished){
+            sentLabel.alpha = 0;
+           //go back here
+        }];
+        
+    }];
+
 }
 
 
