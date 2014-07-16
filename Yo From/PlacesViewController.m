@@ -49,7 +49,8 @@
     float latitude = location.coordinate.latitude;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-%f,%f&radius=100&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",longitude,latitude]]];
-   __block NSMutableArray *results;
+    NSLog(@"request: %@", [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-%f,%f&radius=100&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",longitude,latitude]);
+   __block NSMutableArray *results = [[NSMutableArray alloc]init];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     
         id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -103,7 +104,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+   // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
     //[[self navigationController] pushViewController:chatVC animated:YES];
 }
