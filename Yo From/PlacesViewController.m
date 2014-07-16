@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -105,19 +106,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"send to %@ from %@", _recipients, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
+    NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
    // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
     //[[self navigationController] pushViewController:chatVC animated:YES];
     
     // Create our Installation query
     PFQuery *pushQuery = [PFInstallation query];
-    [pushQuery whereKey:@"username" equalTo:@"spencer"];
+    [pushQuery whereKey:@"username" equalTo:_recipient];
     
     // Send push notification to query
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:pushQuery];
-    [push setMessage:@"Giants scored against the A's! It's now 2-2."];
+    NSString *string = [NSString stringWithFormat:@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+
+    [push setMessage:string];
     [push sendPushInBackground];
 }
 

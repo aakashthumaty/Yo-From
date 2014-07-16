@@ -17,6 +17,7 @@
 
 @implementation UsersViewController{
     NSMutableArray *friends;
+    NSString *recipient;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +34,15 @@
     [super viewDidLoad];
     friends = [[NSMutableArray alloc]init];
     
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
     if(![[NSUserDefaults standardUserDefaults] objectForKey:@"logged_in"]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
@@ -46,11 +56,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 -(void)addFriend{
     UIAlertView *alertView = [[UIAlertView alloc]
                               initWithTitle:@"Add Friend"
@@ -148,8 +153,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if([friends count] > indexPath.row)
     {
+        recipient = [friends objectAtIndex:indexPath.row];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
+        placesVC.recipient = recipient;
         [self presentViewController:placesVC animated:YES completion:nil];
         
 
@@ -168,7 +175,6 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [[segue destinationViewController] setRecipients:friends];
 }
 
 

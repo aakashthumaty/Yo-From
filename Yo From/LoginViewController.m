@@ -41,6 +41,7 @@
 
 - (IBAction)signUpUser:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"logged_in"];
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
     PFQuery *query = [PFQuery queryWithClassName:@"user"];
     [query whereKey:@"username" equalTo:_unTextField.text];
@@ -61,8 +62,8 @@
     
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     currentInstallation[@"username"] = string;
-    
     [currentInstallation saveInBackground];
+        NSLog(@"username: %@", string);
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];

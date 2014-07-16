@@ -15,5 +15,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *placesTableView;
-@property (nonatomic, retain) NSMutableArray *recipients;
+@property (nonatomic, retain) NSString *recipient;
+
 @end
