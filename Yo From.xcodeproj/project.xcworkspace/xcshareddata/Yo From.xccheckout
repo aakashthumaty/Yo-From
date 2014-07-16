@@ -5,18 +5,28 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>8ACED0BA-18AD-431F-87FD-5CACB521C58E</string>
+=======
+	<string>1403277A-4155-499E-9285-3711B9CD3C42</string>
+>>>>>>> 56f6e9c6fc425311ab155049389e4b90f7f951f8
 	<key>IDESourceControlProjectName</key>
 	<string>Yo From</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+<<<<<<< HEAD
 		<key>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</key>
 		<string>https://github.com/aakashthumaty/Yo-From.git</string>
+=======
+		<key>6712C9BB-FE9C-4300-AEDE-5EBAEF357991</key>
+		<string>https://github.com/spenciefy/Yo-From.git</string>
+>>>>>>> 56f6e9c6fc425311ab155049389e4b90f7f951f8
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Yo From.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+<<<<<<< HEAD
 		<key>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</key>
 		<string>../..</string>
 	</dict>
@@ -26,13 +36,28 @@
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
 	<string>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</string>
+=======
+		<key>6712C9BB-FE9C-4300-AEDE-5EBAEF357991</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/spenciefy/Yo-From.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6712C9BB-FE9C-4300-AEDE-5EBAEF357991</string>
+>>>>>>> 56f6e9c6fc425311ab155049389e4b90f7f951f8
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+<<<<<<< HEAD
 			<string>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</string>
+=======
+			<string>6712C9BB-FE9C-4300-AEDE-5EBAEF357991</string>
+>>>>>>> 56f6e9c6fc425311ab155049389e4b90f7f951f8
 			<key>IDESourceControlWCCName</key>
 			<string>Yo-From</string>
 		</dict>
