@@ -9,7 +9,10 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "UsersViewController.h"
-@interface LoginViewController ()
+@interface LoginViewController () {
+    CLLocationManager *locationManager;
+    CLLocation *location;
+}
 
 @end
 
@@ -29,6 +32,13 @@
 - (void)viewDidLoad
 {
        [super viewDidLoad];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    [locationManager stopUpdatingLocation];
     // Do any additional setup after loading the view.
 }
 

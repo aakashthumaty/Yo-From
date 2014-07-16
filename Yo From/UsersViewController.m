@@ -12,7 +12,10 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 
-@interface UsersViewController ()
+@interface UsersViewController () {
+    CLLocationManager *locationManager;
+    CLLocation *location;
+}
 
 
 @end
@@ -34,6 +37,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    [locationManager stopUpdatingLocation];
+    location = [locationManager location];
+
     friends = [[NSMutableArray alloc]init];
     
 }
@@ -85,7 +97,16 @@
                                       cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];
             [alertView show];
-        }else{
+        }else if([textField.text isEqualToString:_username]){
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Oops!"
+                                      message:@"Can't add yourself ;)"
+                                      delegate:self
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+        }
+        else{
         [friends addObject:textField.text];
         [_friendsTableView reloadData];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -136,16 +157,24 @@
     }
     
     UILabel *label = (UILabel*) [cell viewWithTag:101];
+
     NSLog(@"friends: %@", friends);
     if([friends count] > indexPath.row){
         label.text = [friends objectAtIndex:indexPath.row];
-        if(indexPath.row % 2 == 0){//rgb(52, 152, 219)
+        if(indexPath.row % 2 == 0){
+            label.textColor = [UIColor whiteColor];
             cell.backgroundColor = [UIColor colorWithRed:52.0 green:152.0 blue:219.0 alpha:1.0];
         }
+        else{
+            label.textColor = [UIColor blackColor];
+        }
+                                
     }
     
     if(indexPath.row == [friends count]){
-        NSLog(@"adding add");
+        label.textColor = [UIColor whiteColor];
+
+        cell.backgroundColor = [UIColor lightGrayColor];
         label.text = @"+";
     }
 
@@ -162,6 +191,10 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
         placesVC.recipient = recipient;
+        placesVC.latitude = location.coordinate.latitude;
+        placesVC.longitude = location.coordinate.longitude;
+        NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
+
         [self presentViewController:placesVC animated:YES completion:nil];
         
 

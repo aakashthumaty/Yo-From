@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface LoginViewController : UIViewController
+#import <CoreLocation/CoreLocation.h>
+
+@interface LoginViewController : UIViewController <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *unTextField;
 
 - (IBAction)signUpUser:(id)sender;
