@@ -28,8 +28,6 @@
 
 - (void)viewDidLoad
 {
-
-   
        [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -44,7 +42,18 @@
 - (IBAction)signUpUser:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"logged_in"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+    PFQuery *query = [PFQuery queryWithClassName:@"user"];
+    [query whereKey:@"username" equalTo:_unTextField.text];
+    if([query countObjects] > 0){
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Oops!"
+                                  message:@"Username already taken"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    
+    }else{
     PFObject *user = [PFObject objectWithClassName:@"user"];
     NSString *string = _unTextField.text;
     user[@"username"] = string;
@@ -58,7 +67,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];
     [self presentViewController:userVC animated:YES completion:nil];
-
+    }
 }
 
 /*

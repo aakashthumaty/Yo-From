@@ -9,6 +9,8 @@
 #import "UsersViewController.h"
 #import "LoginViewController.h"
 #import "PlacesViewController.h"
+#import <Parse/Parse.h>
+
 @interface UsersViewController ()
 
 @end
@@ -66,11 +68,23 @@
     UITextField *textField = [actionSheet textFieldAtIndex:0];
     NSLog(@"textfield text: %@", textField.text);
     if(![friends containsObject:textField.text]){
+        PFQuery *query = [PFQuery queryWithClassName:@"user"];
+        [query whereKey:@"username" equalTo:textField.text];
+        if([query countObjects] == 0){
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Oops!"
+                                      message:@"No such username"
+                                      delegate:self
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+        }else{
         [friends addObject:textField.text];
         [_friendsTableView reloadData];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:friends forKey:@"friends"];
         [userDefaults synchronize];
+        }
     }else{
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Oops!"
