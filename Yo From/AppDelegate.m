@@ -19,6 +19,11 @@
     return [UIColor colorWithRed:52.0f/255.0f green:152.0f/255.0f blue:219.0f/255.0f alpha:1.0f];
 }
 
++ (UIColor*)myColor2 {//rgb(52, 152, 219) #ecf0f1 rgb(236, 240, 241)
+    return [UIColor colorWithRed:201.0f/255.0f green:205.0f/255.0f blue:206.0f/255.0f alpha:1.0f];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     

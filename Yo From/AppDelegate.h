@@ -19,4 +19,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
++ (UIColor*)myColor1;
++ (UIColor*)myColor2;
+
+
 @end

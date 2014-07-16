@@ -133,17 +133,15 @@
     [self.view addSubview:sentLabel];
     
     sentLabel.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    sentLabel.alpha = 1;
     [UIView animateWithDuration:0.4 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
-        sentLabel.transform = CGAffineTransformIdentity;
+        sentLabel.alpha = 1;
+
     } completion:^(BOOL finished){
         
         [UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            
-            sentLabel.transform = CGAffineTransformMakeScale(0.0, 0.0);
-        } completion:^(BOOL finished){
             sentLabel.alpha = 0;
+
+        } completion:^(BOOL finished){
          
             [self dismissViewControllerAnimated:YES completion:nil];
     }];
