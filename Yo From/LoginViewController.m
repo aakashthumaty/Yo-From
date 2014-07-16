@@ -43,7 +43,8 @@
 
 - (IBAction)signUpUser:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     PFObject *user = [PFObject objectWithClassName:@"user"];
     NSString *string = _unTextField.text;
     user[@"username"] = string;
