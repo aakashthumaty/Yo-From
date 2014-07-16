@@ -64,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if([places count] >= 9){
-        return 6;
+        return 9;
     }
     else{
         return [places count];
