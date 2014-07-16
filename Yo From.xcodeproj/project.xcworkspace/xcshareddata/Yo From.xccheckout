@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8ACED0BA-18AD-431F-87FD-5CACB521C58E</string>
+	<string>BBD41AA1-6F68-411E-981A-9CF714EEC555</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Yo From</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</key>
+		<key>720009AC-3DEA-4D46-BCEB-0A0BFB8A9200</key>
 		<string>https://github.com/aakashthumaty/Yo-From.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Yo From.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</key>
+		<key>720009AC-3DEA-4D46-BCEB-0A0BFB8A9200</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</string>
+	<string>720009AC-3DEA-4D46-BCEB-0A0BFB8A9200</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>83A9E97A-E35B-4D17-B9A5-EB8E552B7DA1</string>
+			<string>720009AC-3DEA-4D46-BCEB-0A0BFB8A9200</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Yo-From</string>
 		</dict>

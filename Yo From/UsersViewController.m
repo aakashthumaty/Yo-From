@@ -7,7 +7,7 @@
 //
 
 #import "UsersViewController.h"
-
+#import "LoginViewController.h"
 @interface UsersViewController ()
 
 @end
@@ -26,6 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //if(![[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
+        [self presentViewController:loginVC animated:NO completion:nil];
+    //}
+
+    
     // Do any additional setup after loading the view.
 }
 

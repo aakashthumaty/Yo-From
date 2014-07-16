@@ -7,12 +7,15 @@
 //
 
 #import "LoginViewController.h"
-
+#import <Parse/Parse.h>
+#import "UsersViewController.h"
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+
+@synthesize usernameTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,9 +26,12 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+
+   
+       [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
@@ -33,6 +39,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)signup:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+    
+    PFObject *user = [PFObject objectWithClassName:@"user"];
+    NSString *string = usernameTextField.text;
+    user[@"username"] = @"%@",string;
+    [user saveInBackground];
+
+    
 }
 
 /*
@@ -45,5 +62,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

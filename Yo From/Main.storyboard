@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Xb0-1A-5c3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Xb0-1A-5c3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -51,7 +51,7 @@
         <!--Login View Controller-->
         <scene sceneID="7bH-rT-bat">
             <objects>
-                <viewController id="1GV-8V-wiA" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1GV-8V-wiA" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ged-wr-TFx"/>
                         <viewControllerLayoutGuide type="bottom" id="cdu-ba-ru8"/>
@@ -80,6 +80,10 @@
                                 <color key="textColor" red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textField:" destination="1GV-8V-wiA" eventType="editingDidEnd" id="whs-FI-DpP"/>
+                                    <action selector="usernameTextField:" destination="1GV-8V-wiA" eventType="editingDidEnd" id="pMG-QM-7qw"/>
+                                </connections>
                             </textField>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="239-ol-weR">
                                 <rect key="frame" x="132" y="206" width="53" height="30"/>
@@ -88,6 +92,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="signUp:" destination="1GV-8V-wiA" eventType="touchUpInside" id="zpf-gd-kc0"/>
                                     <action selector="signup:" destination="1GV-8V-wiA" eventType="touchUpInside" id="VvR-en-b6X"/>
                                 </connections>
                             </button>
