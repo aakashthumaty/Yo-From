@@ -10,7 +10,10 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface PlacesViewController : UIViewController <CLLocationManagerDelegate>
+@interface PlacesViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
 
+}
+
+@property (weak, nonatomic) IBOutlet UITableView *placesTableView;
 
 @end
