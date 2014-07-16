@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface PlacesViewController : UIViewController
+
+@interface PlacesViewController : UIViewController <CLLocationManagerDelegate>
+
 
 @end
