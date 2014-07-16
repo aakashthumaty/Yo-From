@@ -49,16 +49,20 @@
                               message:@"Enter username"
                               delegate:self
                               cancelButtonTitle:@"Cancel"
-                              otherButtonTitles:@"Ok", nil];
+                              otherButtonTitles:@"Add", nil];
     [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+    
     UITextField *textField = [actionSheet textFieldAtIndex:0];
     NSLog(@"textfield text: %@", textField.text);
     [friends addObject:textField.text];
-
+    
+    [_friendsTableView reloadData];
+    }
 }
 #pragma mark - Table view data source
 
@@ -67,10 +71,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [friends count]+2;
+    return [friends count]+1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 70;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -81,7 +85,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    static NSString *friendCellIdentifier = @"FriendCell";
+    static NSString *friendCellIdentifier = @"friendCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:friendCellIdentifier];
     if (cell == nil) {
@@ -91,7 +95,15 @@
     }
     
     UILabel *label = (UILabel*) [cell viewWithTag:101];
-    label.text = [friends objectAtIndex:indexPath.row];
+    NSLog(@"friends: %@", friends);
+        if([friends count] > indexPath.row){
+        label.text = [friends objectAtIndex:indexPath.row];
+    }
+    
+    if(indexPath.row == [friends count]){
+        
+        label.text = @"+";
+    }
 
     
     return cell;
@@ -99,7 +111,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(!(indexPath.row == [friends count] + 1))
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if([friends count] > indexPath.row)
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
@@ -107,12 +120,11 @@
         
 
     }
-    else if(indexPath.row == [friends count] + 1){
-        
+    else if(indexPath.row == [friends count]){
+    
+        [self addFriend];
     }
 
-    
-    //NSString *conversationIdentifier = [message conversationForType:LYRConversationTypeParticipants].identifier;
     
     //[[self navigationController] pushViewController:chatVC animated:YES];
 }
@@ -127,6 +139,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
 
 
 @end

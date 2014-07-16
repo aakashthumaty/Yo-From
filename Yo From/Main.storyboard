@@ -7,7 +7,7 @@
         <!--Users View Controller-->
         <scene sceneID="C6i-tv-oe2">
             <objects>
-                <viewController id="kCh-cy-Egj" customClass="UsersViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="usersVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kCh-cy-Egj" customClass="UsersViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tDk-lT-RWr"/>
                         <viewControllerLayoutGuide type="bottom" id="z00-uS-4ke"/>
@@ -16,22 +16,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="blB-8w-zkn">
-                                <rect key="frame" x="0.0" y="67" width="320" height="501"/>
+                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="blB-8w-zkn">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" rowHeight="70" id="0us-gM-5Ab">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0us-gM-5Ab" id="4Pn-Zi-GIF">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AAKASH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qc-gs-Viu">
+                                                    <rect key="frame" x="17" y="16" width="286" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kCh-cy-Egj" id="QgX-mK-jFh"/>
+                                    <outlet property="delegate" destination="kCh-cy-Egj" id="jHe-bI-fYh"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="hym-Kl-oRS"/>
                     <connections>
+                        <outlet property="friendsTableView" destination="blB-8w-zkn" id="NSa-Jj-8wB"/>
                         <segue destination="kxF-jD-7xA" kind="modal" id="peG-eQ-rYG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0Q-ml-jKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="62"/>
+            <point key="canvasLocation" x="494" y="40"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="7bH-rT-bat">
@@ -65,10 +89,6 @@
                                 <color key="textColor" red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textField:" destination="1GV-8V-wiA" eventType="editingDidEnd" id="whs-FI-DpP"/>
-                                    <action selector="usernameTextField:" destination="1GV-8V-wiA" eventType="editingDidEnd" id="pMG-QM-7qw"/>
-                                </connections>
                             </textField>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="239-ol-weR">
                                 <rect key="frame" x="132" y="206" width="53" height="30"/>
@@ -84,7 +104,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="usernameTextField" destination="rsn-Ds-7Ko" id="7HB-UN-F6k"/>
+                        <outlet property="unTextField" destination="rsn-Ds-7Ko" id="Jy7-cb-O27"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2C-z2-xQq" userLabel="First Responder" sceneMemberID="firstResponder"/>

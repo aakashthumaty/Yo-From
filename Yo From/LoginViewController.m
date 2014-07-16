@@ -15,7 +15,6 @@
 
 @implementation LoginViewController
 
-@synthesize usernameTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,9 +45,13 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
     
     PFObject *user = [PFObject objectWithClassName:@"user"];
-    NSString *string = usernameTextField.text;
+    NSString *string = _unTextField.text;
     user[@"username"] = string;
     [user saveInBackground];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];
+    [self presentViewController:userVC animated:NO completion:nil];
 
 }
 

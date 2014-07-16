@@ -105,10 +105,6 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
- 
-    
-    //NSString *conversationIdentifier = [message conversationForType:LYRConversationTypeParticipants].identifier;
-    
     //[[self navigationController] pushViewController:chatVC animated:YES];
 }
 
