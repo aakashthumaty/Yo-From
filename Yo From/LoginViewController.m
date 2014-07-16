@@ -42,7 +42,7 @@
 
 
 - (IBAction)signUpUser:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"logged_in"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     PFObject *user = [PFObject objectWithClassName:@"user"];
@@ -52,7 +52,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];
-    [self presentViewController:userVC animated:NO completion:nil];
+    [self presentViewController:userVC animated:YES completion:nil];
 
 }
 
