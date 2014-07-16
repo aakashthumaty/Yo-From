@@ -115,8 +115,10 @@
     [pushQuery whereKey:@"username" equalTo:@"spencer"];
     
     // Send push notification to query
-    [PFPush sendPushMessageToQueryInBackground:pushQuery
-                                   withMessage:@"Hello World!"];
+    PFPush *push = [[PFPush alloc] init];
+    [push setQuery:pushQuery];
+    [push setMessage:@"Giants scored against the A's! It's now 2-2."];
+    [push sendPushInBackground];
 }
 
 

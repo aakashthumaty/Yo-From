@@ -50,6 +50,11 @@
     user[@"username"] = string;
     [user saveInBackground];
     
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    currentInstallation[@"username"] = string;
+    
+    [currentInstallation saveInBackground];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];
     [self presentViewController:userVC animated:YES completion:nil];

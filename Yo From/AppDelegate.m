@@ -161,12 +161,14 @@
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
+    NSLog(@"got here");
     // Store the deviceToken in the current installation and save it to Parse.
     [PFPush storeDeviceToken:newDeviceToken];
 
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:newDeviceToken];
     [currentInstallation saveInBackground];
+
 }
 
 - (void)application:(UIApplication *)application
