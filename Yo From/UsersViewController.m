@@ -35,6 +35,12 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
         [self presentViewController:loginVC animated:NO completion:nil];
+    }else{
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        if([userDefaults objectForKey:@"friends"]){
+            friends = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"friends"] mutableCopy];
+            [self.friendsTableView reloadData];
+        }
     }
 }
 
@@ -55,13 +61,26 @@
 }
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
+    if (buttonIndex == 1 && actionSheet.alertViewStyle == UIAlertViewStylePlainTextInput) {
     
     UITextField *textField = [actionSheet textFieldAtIndex:0];
     NSLog(@"textfield text: %@", textField.text);
-    [friends addObject:textField.text];
+    if(![friends containsObject:textField.text]){
+        [friends addObject:textField.text];
+        [_friendsTableView reloadData];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:friends forKey:@"friends"];
+        [userDefaults synchronize];
+    }else{
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Oops!"
+                                  message:@"Username already added!"
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"OK", nil];
+        [alertView show];
+    }
     
-    [_friendsTableView reloadData];
     }
 }
  #pragma mark - Table view data source
