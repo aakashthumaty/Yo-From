@@ -8,6 +8,7 @@
 
 #import "UsersViewController.h"
 #import "LoginViewController.h"
+#import "PlacesViewController.h"
 @interface UsersViewController ()
 
 @end
@@ -79,6 +80,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
     static NSString *friendCellIdentifier = @"FriendCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:friendCellIdentifier];
@@ -97,9 +99,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
-    
+    if(!(indexPath.row == [friends count] + 1))
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
+        [self presentViewController:placesVC animated:NO completion:nil];
+        
+
+    }
+    else if(indexPath.row == [friends count] + 1){
+        
+    }
+
     
     //NSString *conversationIdentifier = [message conversationForType:LYRConversationTypeParticipants].identifier;
     
