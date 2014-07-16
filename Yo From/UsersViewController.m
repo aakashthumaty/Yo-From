@@ -157,29 +157,28 @@
     }
 
     UILabel *label = (UILabel*) [cell viewWithTag:101];
-
     NSLog(@"friends: %@", friends);
     if([friends count] > indexPath.row){
         label.text = [friends objectAtIndex:indexPath.row];
-
         if(indexPath.row % 2 == 0){//rgb(52, 152, 219)
             cell.backgroundColor = [AppDelegate myColor1];
             label.textColor = [UIColor whiteColor];
-
+            
         }
-        else{
+        else
+        {
             label.textColor = [AppDelegate myColor1];
-
-            if(indexPath.row == [friends count]){
-                label.textColor = [UIColor whiteColor];
-                cell.backgroundColor = [UIColor lightGrayColor];
-                label.text = @"+";
-        
-                cell.backgroundColor = [AppDelegate myColor2];
-                label.textColor = [UIColor whiteColor];
-            }
         }
     }
+    
+    if(indexPath.row == [friends count]){
+        NSLog(@"adding add");
+        label.text = @"+";
+        
+        cell.backgroundColor = [AppDelegate myColor2];
+        label.textColor = [UIColor whiteColor];
+    }
+
     
     return cell;
 }

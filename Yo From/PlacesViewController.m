@@ -123,12 +123,12 @@
 
     [push setMessage:string];
     [push sendPushInBackground];
-    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 100, 50)];
+    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 150, 50)];
     sentLabel.center = self.view.center;
     sentLabel.text = @"Yo Sent!";
-    sentLabel.font = [UIFont systemFontOfSize:40.0];
+    sentLabel.font = [UIFont systemFontOfSize:30.0];
     sentLabel.backgroundColor = [UIColor lightGrayColor];
-    sentLabel.textColor = [UIColor blackColor];
+    sentLabel.textColor = [UIColor whiteColor];
     sentLabel.textAlignment = NSTextAlignmentCenter;
     sentLabel.alpha = 0.f;
     [self.view addSubview:sentLabel];
@@ -136,7 +136,7 @@
     [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
         [sentLabel setAlpha:0.7f];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2f delay:0.3f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.2f delay:0.6f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [sentLabel setAlpha:0.f];
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:YES completion:nil];
