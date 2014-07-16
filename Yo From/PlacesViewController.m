@@ -8,6 +8,7 @@
 
 #import "PlacesViewController.h"
 #import "UIImageView+WebCache.h"
+#import <Parse/Parse.h>
 @interface PlacesViewController ()
 
 @end
@@ -107,6 +108,14 @@
    // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //ChatTableViewController *chatVC = (ChatTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"chatVC"];
     //[[self navigationController] pushViewController:chatVC animated:YES];
+    
+    // Create our Installation query
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"username" equalTo:@"spencer"];
+    
+    // Send push notification to query
+    [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                   withMessage:@"Hello World!"];
 }
 
 

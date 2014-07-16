@@ -31,11 +31,11 @@
     [super viewDidLoad];
     friends = [[NSMutableArray alloc]init];
     
-    //if(![[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"]) {
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
         [self presentViewController:loginVC animated:NO completion:nil];
-    //}
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,6 +84,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
 
     static NSString *friendCellIdentifier = @"friendCell";
     
