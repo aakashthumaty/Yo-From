@@ -118,7 +118,7 @@
     // Send push notification to query
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:pushQuery];
-    NSString *string = [NSString stringWithFormat:@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    NSString *string = [NSString stringWithFormat:@"%@ @ %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
 
     [push setMessage:string];
     [push sendPushInBackground];
