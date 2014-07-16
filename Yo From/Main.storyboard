@@ -8,6 +8,10 @@
         <scene sceneID="C6i-tv-oe2">
             <objects>
                 <viewController storyboardIdentifier="usersVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kCh-cy-Egj" customClass="UsersViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t7w-UF-vVM"/>
+                        <viewControllerLayoutGuide type="bottom" id="eG2-VM-cjz"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IN5-kj-zGw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,6 +68,10 @@
         <scene sceneID="7bH-rT-bat">
             <objects>
                 <viewController storyboardIdentifier="loginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1GV-8V-wiA" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kOW-Ak-liV"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHk-Y6-jLS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NFI-L7-soH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -75,7 +83,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please pick a username." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M3n-rZ-u6d">
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please pick a username." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="265" id="M3n-rZ-u6d">
                                 <rect key="frame" x="28" y="92" width="265" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
@@ -115,6 +123,10 @@
         <scene sceneID="vG6-Th-AgM">
             <objects>
                 <viewController storyboardIdentifier="placesVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kxF-jD-7xA" customClass="PlacesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rgX-OC-4Rw"/>
+                        <viewControllerLayoutGuide type="bottom" id="5GM-SC-Mqr"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qn9-pM-EZp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
