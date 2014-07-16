@@ -40,16 +40,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)signup:(id)sender {
-    
+
+
+- (IBAction)signUpUser:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"logged_in"];
     
     PFObject *user = [PFObject objectWithClassName:@"user"];
     NSString *string = usernameTextField.text;
-    user[@"username"] = @"%@",string;
+    user[@"username"] = string;
     [user saveInBackground];
 
-    
 }
 
 /*
