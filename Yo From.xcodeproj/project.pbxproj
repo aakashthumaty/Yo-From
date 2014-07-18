@@ -36,6 +36,7 @@
 		07ADB0751976521A002D80E0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB0741976521A002D80E0 /* StoreKit.framework */; };
 		07ADB07A19765592002D80E0 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADB07919765592002D80E0 /* UserData.m */; };
 		07ADB08A19766299002D80E0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB08919766299002D80E0 /* Parse.framework */; };
+		6C4B05181978E12800357A14 /* close_nav_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4B05171978E12800357A14 /* close_nav_blue.png */; };
 		6CBE5C6C19765DF3005DDB86 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */; };
 		6CBE5C6F19765E2B005DDB86 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */; };
 		6CBE5C8D197668D2005DDB86 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE5C71197668D2005DDB86 /* LICENSE */; };
@@ -101,6 +102,7 @@
 		07ADB07819765592002D80E0 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		07ADB07919765592002D80E0 /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
 		07ADB08919766299002D80E0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6C4B05171978E12800357A14 /* close_nav_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_nav_blue.png; sourceTree = "<group>"; };
 		6CBE5C6A19765DF3005DDB86 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		6CBE5C6D19765E2B005DDB86 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		07ADB03119764F9F002D80E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6C4B05171978E12800357A14 /* close_nav_blue.png */,
 				07ADB03219764F9F002D80E0 /* Yo From-Info.plist */,
 				07ADB03319764F9F002D80E0 /* InfoPlist.strings */,
 				07ADB03619764F9F002D80E0 /* main.m */,
@@ -394,6 +397,7 @@
 			files = (
 				6CCBD5AB19765AF800F0E50A /* Main.storyboard in Resources */,
 				07ADB03519764F9F002D80E0 /* InfoPlist.strings in Resources */,
+				6C4B05181978E12800357A14 /* close_nav_blue.png in Resources */,
 				6CBE5C8E197668D2005DDB86 /* README.md in Resources */,
 				6CBE5C8D197668D2005DDB86 /* LICENSE in Resources */,
 				07ADB04019764F9F002D80E0 /* Images.xcassets in Resources */,
