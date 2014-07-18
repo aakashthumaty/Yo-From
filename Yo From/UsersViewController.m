@@ -191,7 +191,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-      NSInteger friendCount = (NSInteger)indexPath.row;
+    NSInteger friendCount = (NSInteger)[friends count];
     if(friendCount > (int)indexPath.row){
         recipient = [friends objectAtIndex:indexPath.row];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
