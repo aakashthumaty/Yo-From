@@ -26,6 +26,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (launchOptions != nil)
+	{
+		NSDictionary *dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+			NSLog(@"Launched from push notification: %@", dictionary);
+		}
+	}
     
     [Parse setApplicationId:@"39R5Z3p67UaBZPFBbaolrE232Qvurmp0bUTTq4uY"
                   clientKey:@"7baBEqEVXikWSKfzRf05RoRF2q9vfBSusWjt5vM5"];
@@ -37,11 +45,6 @@
      UIRemoteNotificationTypeAlert |
      UIRemoteNotificationTypeSound];
     
-    
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    // Override point for customization after application launch.
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
     return YES;
 }
 
