@@ -33,7 +33,7 @@
 		{
 			NSLog(@"Launched from push notification: %@", userInfo);
             UserData *userData = [UserData sharedManager];
-            [userData.history addObject:[userInfo objectForKey:@"alert"]];
+            [userData.history addObject:@{@"text":[userInfo objectForKey:@"alert"], @"timestamp"}: nil];
 		}
 	}
     
@@ -190,7 +190,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"userinfo: %@", userInfo);
     [PFPush handlePush:userInfo];
     UserData *userData = [UserData sharedManager];
-    [userData.history addObject:[userInfo objectForKey:@"alert"]];
-     
+    [userData.history addObject:@{@"text":[userInfo objectForKey:@"alert"], @"timestamp"}: nil];
+    
 }
 @end
