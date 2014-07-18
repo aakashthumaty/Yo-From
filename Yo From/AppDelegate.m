@@ -31,9 +31,10 @@
 		NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (userInfo != nil)
 		{
-			NSLog(@"Launched from push notification: %@", userInfo);
             UserData *userData = [UserData sharedManager];
-            [userData.history addObject:@{@"text":[userInfo objectForKey:@"alert"], @"timestamp": @"nil"}];
+			NSLog(@"Launched from push notification: %@", userInfo);
+            NSLog(@"alert: %@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+            [userData.history addObject:@{@"text":[[userInfo objectForKey:@"aps"] objectForKey:@"alert"], @"timestamp": @"nil"}];
 		}
 	}
     
@@ -74,6 +75,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
@@ -190,7 +192,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"userinfo: %@", userInfo);
     [PFPush handlePush:userInfo];
     UserData *userData = [UserData sharedManager];
-    [userData.history addObject:@{@"text":[userInfo objectForKey:@"alert"], @"timestamp": @"nil"}];
-    
+    NSLog(@"alert: %@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+    [userData.history addObject:@{@"text":[[userInfo objectForKey:@"aps"] objectForKey:@"alert"], @"timestamp": @"nil"}];
 }
 @end

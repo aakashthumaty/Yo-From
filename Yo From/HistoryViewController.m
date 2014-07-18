@@ -7,7 +7,7 @@
 //
 
 #import "HistoryViewController.h"
-
+#import "UserData.h"
 @interface HistoryViewController ()
 
 @end
@@ -33,7 +33,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_yofromHistory count];
+    UserData *userData = [UserData sharedManager];
+    return [userData.history count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
@@ -56,10 +57,11 @@
     }
     
     UILabel *timeLabel = (UILabel*) [cell viewWithTag:101];
-    timeLabel.text = [[_yofromHistory objectAtIndex:indexPath.row]objectForKey:@"timestamp"];
+    UserData *userData = [UserData sharedManager];
+    timeLabel.text = [[userData.history objectAtIndex:indexPath.row]objectForKey:@"timestamp"];
     
     UILabel *textLabel = (UILabel*) [cell viewWithTag:102];
-    textLabel.text = [[_yofromHistory objectAtIndex:indexPath.row]objectForKey:@"text"];
+    textLabel.text = [[userData.history objectAtIndex:indexPath.row]objectForKey:@"text"];
     
     return cell;
 }
