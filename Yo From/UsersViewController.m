@@ -99,7 +99,8 @@
                                       cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];
             [alertView show];
-        }else if([textField.text isEqualToString:_username]){
+        }
+        else if([textField.text isEqualToString:_username]){
             UIAlertView *alertView = [[UIAlertView alloc]
                                       initWithTitle:@"Oops!"
                                       message:@"Can't add yourself ;)"
@@ -109,7 +110,7 @@
             [alertView show];
         }
         else{
-        [friends addObject:textField.text];
+        [friends insertObject:textField.text atIndex:0];
         [_friendsTableView reloadData];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:friends forKey:@"friends"];
@@ -174,7 +175,6 @@
     }
     else if(friendCount == (int)indexPath.row ){
         label.text = @"+";
-        
         cell.backgroundColor = [AppDelegate myColor2];
         label.textColor = [UIColor whiteColor];
     }
@@ -185,9 +185,17 @@
 
     }
     
+    if(indexPath.row % 2 == 0){//rgb(52, 152, 219)
+        cell.backgroundColor = [AppDelegate myColor1];
+        label.textColor = [UIColor whiteColor];
+        
+    }
+    else
+    {
+        label.textColor = [AppDelegate myColor1];
+    }
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
