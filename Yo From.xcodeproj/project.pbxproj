@@ -53,6 +53,7 @@
 		6CBE5C99197668D2005DDB86 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C8A197668D2005DDB86 /* UIImage+MultiFormat.m */; };
 		6CBE5C9A197668D2005DDB86 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C8C197668D2005DDB86 /* UIImageView+WebCache.m */; };
 		6CCBD5AB19765AF800F0E50A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CCBD5AA19765AF800F0E50A /* Main.storyboard */; };
+		6CCBDF651977366F001AD2E2 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCBDF641977366F001AD2E2 /* HistoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,8 @@
 		6CBE5C8B197668D2005DDB86 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		6CBE5C8C197668D2005DDB86 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		6CCBD5AA19765AF800F0E50A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6CCBDF631977366F001AD2E2 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		6CCBDF641977366F001AD2E2 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +231,8 @@
 				6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */,
 				6CBE5C6D19765E2B005DDB86 /* UsersViewController.h */,
 				6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */,
+				6CCBDF631977366F001AD2E2 /* HistoryViewController.h */,
+				6CCBDF641977366F001AD2E2 /* HistoryViewController.m */,
 				07ADB07819765592002D80E0 /* UserData.h */,
 				07ADB07919765592002D80E0 /* UserData.m */,
 				07ADB03F19764F9F002D80E0 /* Images.xcassets */,
@@ -413,6 +418,7 @@
 				6CBE5C6F19765E2B005DDB86 /* UsersViewController.m in Sources */,
 				6CBE5C95197668D2005DDB86 /* SDWebImageManager.m in Sources */,
 				6CBE5C90197668D2005DDB86 /* SDImageCache.m in Sources */,
+				6CCBDF651977366F001AD2E2 /* HistoryViewController.m in Sources */,
 				6CBE5C94197668D2005DDB86 /* SDWebImageDownloaderOperation.m in Sources */,
 				6CBE5C6C19765DF3005DDB86 /* PlacesViewController.m in Sources */,
 				6CBE5C97197668D2005DDB86 /* UIButton+WebCache.m in Sources */,

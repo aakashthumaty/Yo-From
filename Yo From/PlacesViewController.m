@@ -34,14 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    locationManager = [[CLLocationManager alloc] init];
-//    locationManager.delegate = self;
-//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    locationManager.distanceFilter = kCLDistanceFilterNone;
-//    [locationManager startUpdatingLocation];
-//    [locationManager stopUpdatingLocation];
-    NSLog(@"latlong: %f %f", _latitude, _longitude);
+
     [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
         NSLog(@"places: %@", places);
         [placesTableView reloadData];

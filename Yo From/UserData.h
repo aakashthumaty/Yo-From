@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface UserData : NSObject
+@property (nonatomic, retain) NSMutableArray *history;
++ (id)sharedManager;
 
 @end

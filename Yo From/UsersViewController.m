@@ -11,6 +11,8 @@
 #import "PlacesViewController.h"
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+#import "HistoryViewController.h"
+#import "UserData.h"
 
 @interface UsersViewController () {
     CLLocationManager *locationManager;
@@ -85,7 +87,7 @@
     if (buttonIndex == 1 && actionSheet.alertViewStyle == UIAlertViewStylePlainTextInput) {
     
     UITextField *textField = [actionSheet textFieldAtIndex:0];
-    NSLog(@"textfield text: %@", textField.text);
+    NSLog(@"textfield text: %@, %@", textField.text, _username);
     if(![friends containsObject:textField.text]){
         PFQuery *query = [PFQuery queryWithClassName:@"user"];
         [query whereKey:@"username" equalTo:textField.text];
@@ -132,7 +134,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [friends count]+1;
+    return [friends count]+2;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
@@ -157,28 +159,31 @@
     }
 
     UILabel *label = (UILabel*) [cell viewWithTag:101];
-    NSLog(@"friends: %@", friends);
-    if([friends count] > indexPath.row){
+    NSInteger friendCount = (NSInteger)[friends count];
+    NSLog(@"friendcount: %d", friendCount -1 == (int)indexPath.row);
+    if(friendCount > (int)indexPath.row){
         label.text = [friends objectAtIndex:indexPath.row];
         if(indexPath.row % 2 == 0){//rgb(52, 152, 219)
             cell.backgroundColor = [AppDelegate myColor1];
             label.textColor = [UIColor whiteColor];
-            
         }
         else
         {
             label.textColor = [AppDelegate myColor1];
         }
     }
-    
-    if(indexPath.row == [friends count]){
-        NSLog(@"adding add");
+    else if(friendCount == (int)indexPath.row ){
         label.text = @"+";
         
         cell.backgroundColor = [AppDelegate myColor2];
         label.textColor = [UIColor whiteColor];
     }
+    else if(friendCount < (int)indexPath.row ){
+        label.text = @"History";
+        label.textColor = [UIColor whiteColor];
+        cell.backgroundColor = [AppDelegate myColor1];
 
+    }
     
     return cell;
 }
@@ -186,8 +191,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if([friends count] > indexPath.row)
-    {
+      NSInteger friendCount = (NSInteger)indexPath.row;
+    if(friendCount > (int)indexPath.row){
         recipient = [friends objectAtIndex:indexPath.row];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
@@ -197,14 +202,20 @@
         NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
 
         [self presentViewController:placesVC animated:YES completion:nil];
-        
-
-    }
-    else if(indexPath.row == [friends count]){
     
+    }
+    else if(friendCount == (int)indexPath.row ){
         [self addFriend];
     }
+    else if(friendCount < (int)indexPath.row ){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        HistoryViewController *historyVC = (HistoryViewController*)[storyboard instantiateViewControllerWithIdentifier:@"historyVC"];
+        UserData *userData =[UserData sharedManager];
+        historyVC.yofromHistory = userData.history;
+        
+        [self presentViewController:historyVC animated:YES completion:nil];
 
+    }
 }
 
 
