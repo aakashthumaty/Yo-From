@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+typedef void (^completion)(BOOL);
 
 
 @interface PlacesViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
@@ -17,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *placesTableView;
 @property (nonatomic, retain) NSString *recipient;
 @property (nonatomic, retain) NSString *username;
+@property (nonatomic) float longitude;
+@property (nonatomic) float latitude;
 
 @end

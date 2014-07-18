@@ -12,7 +12,10 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 
-@interface UsersViewController ()
+@interface UsersViewController () {
+    CLLocationManager *locationManager;
+    CLLocation *location;
+}
 
 
 @end
@@ -34,6 +37,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    [locationManager stopUpdatingLocation];
+    location = [locationManager location];
+
     friends = [[NSMutableArray alloc]init];
     
 }
@@ -85,7 +97,17 @@
                                       cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];
             [alertView show];
-        }else{
+        }
+        else if([textField.text isEqualToString:_username]){
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Oops!"
+                                      message:@"Can't add yourself ;)"
+                                      delegate:self
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+        }
+        else{
         [friends insertObject:textField.text atIndex:0];
         [_friendsTableView reloadData];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -139,13 +161,12 @@
     NSLog(@"friends: %@", friends);
     if([friends count] > indexPath.row){
         label.text = [friends objectAtIndex:indexPath.row];
-     
+
     }
     
     if(indexPath.row == [friends count]){
         NSLog(@"adding add");
         label.text = @"+";
-        //[_friendsTableView reloadData];
 
     }
     
@@ -158,11 +179,8 @@
     {
         label.textColor = [AppDelegate myColor1];
     }
-
-    
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -172,6 +190,10 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
         placesVC.recipient = recipient;
+        placesVC.latitude = location.coordinate.latitude;
+        placesVC.longitude = location.coordinate.longitude;
+        NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
+
         [self presentViewController:placesVC animated:YES completion:nil];
         
 

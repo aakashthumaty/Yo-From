@@ -18,6 +18,7 @@
     CLLocationManager *locationManager;
     CLLocation *location;
     NSMutableArray *places;
+
 }
 @synthesize placesTableView;
 
@@ -34,28 +35,28 @@
 {
     [super viewDidLoad];
     
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager startUpdatingLocation];
-    [locationManager stopUpdatingLocation];
-    location = [locationManager location];
-    
-    places = [self fetchPlacesNearby];
-    [placesTableView reloadData];
+//    locationManager = [[CLLocationManager alloc] init];
+//    locationManager.delegate = self;
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    locationManager.distanceFilter = kCLDistanceFilterNone;
+//    [locationManager startUpdatingLocation];
+//    [locationManager stopUpdatingLocation];
+    NSLog(@"latlong: %f %f", _latitude, _longitude);
+    [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
+        NSLog(@"places: %@", places);
+        [placesTableView reloadData];
+
+    }];
     
 }
 
--(NSMutableArray *)fetchPlacesNearby{
-    float longitude = location.coordinate.longitude;
-    float latitude = location.coordinate.latitude;
-    
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=500&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",latitude,longitude]]];
-    id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    return [[object objectForKey:@"results"]mutableCopy];
+-(void)fetchPlacesWithLat:(float)lat andLong:(float)lng completionBlock:(void (^)(BOOL success))completionBlock{
 
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=500&key=AIzaSyBu2QJmZD81jJuvQ_62eXlYxZFknx3wpKU",lat,lng]]];
+    id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    places = [[object objectForKey:@"results"]mutableCopy];
+    
+    completionBlock(YES);
 }
 
 #pragma mark - Table view data source
@@ -65,8 +66,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if([places count] >= 9){
-        return 9;
+    if([places count] >= 20){
+        return 20;
     }
     else{
         return [places count];
@@ -122,19 +123,20 @@
 
     [push setMessage:string];
     [push sendPushInBackground];
-    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 300, 50)];
+    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 150, 50)];
     sentLabel.center = self.view.center;
     sentLabel.text = @"Yo Sent!";
-    sentLabel.font = [UIFont systemFontOfSize:40.0];
-    
-    sentLabel.textColor = [UIColor blackColor];
+    sentLabel.font = [UIFont systemFontOfSize:30.0];
+    sentLabel.backgroundColor = [UIColor lightGrayColor];
+    sentLabel.textColor = [UIColor whiteColor];
     sentLabel.textAlignment = NSTextAlignmentCenter;
     sentLabel.alpha = 0.f;
     [self.view addSubview:sentLabel];
-        [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [sentLabel setAlpha:1.f];
+
+    [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [sentLabel setAlpha:0.7f];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2f delay:0.3f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.2f delay:0.6f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [sentLabel setAlpha:0.f];
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:YES completion:nil];
