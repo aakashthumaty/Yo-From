@@ -170,6 +170,7 @@
         }
         else
         {
+            cell.backgroundColor = [UIColor whiteColor];
             label.textColor = [AppDelegate myColor1];
         }
     }
@@ -185,15 +186,6 @@
 
     }
     
-    if(indexPath.row % 2 == 0){//rgb(52, 152, 219)
-        cell.backgroundColor = [AppDelegate myColor1];
-        label.textColor = [UIColor whiteColor];
-        
-    }
-    else
-    {
-        label.textColor = [AppDelegate myColor1];
-    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

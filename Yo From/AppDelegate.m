@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-
+#import "UserData.h"
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -28,10 +28,12 @@
 {
     if (launchOptions != nil)
 	{
-		NSDictionary *dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-		if (dictionary != nil)
+		NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (userInfo != nil)
 		{
-			NSLog(@"Launched from push notification: %@", dictionary);
+			NSLog(@"Launched from push notification: %@", userInfo);
+            UserData *userData = [UserData sharedManager];
+            [userData.history addObject:[userInfo objectForKey:@"alert"]];
 		}
 	}
     
@@ -185,6 +187,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"userinfo: %@", userInfo);
     [PFPush handlePush:userInfo];
+    UserData *userData = [UserData sharedManager];
+    [userData.history addObject:[userInfo objectForKey:@"alert"]];
+     
 }
 @end
