@@ -10,6 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 @interface UsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
-@property (nonatomic, retain) NSString *username;
+@property (nonatomic, strong) NSString *username;
 
 @end

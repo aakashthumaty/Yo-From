@@ -80,6 +80,7 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];
+    userVC.username = string;
     [self presentViewController:userVC animated:YES completion:nil];
     }
 }
