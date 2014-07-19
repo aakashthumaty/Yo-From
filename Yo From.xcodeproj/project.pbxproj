@@ -39,6 +39,7 @@
 		6C4B05181978E12800357A14 /* close_nav_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4B05171978E12800357A14 /* close_nav_blue.png */; };
 		6C594B471978F2D8000260A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C594B461978F2D8000260A6 /* MapKit.framework */; };
 		6C594B4A1978F331000260A6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C594B491978F331000260A6 /* MapViewController.m */; };
+		6C674A21197A3B520036898E /* TBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C674A20197A3B520036898E /* TBTableView.m */; };
 		6CBE5C6C19765DF3005DDB86 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */; };
 		6CBE5C6F19765E2B005DDB86 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */; };
 		6CBE5C8D197668D2005DDB86 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6CBE5C71197668D2005DDB86 /* LICENSE */; };
@@ -108,6 +109,8 @@
 		6C594B461978F2D8000260A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6C594B481978F331000260A6 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		6C594B491978F331000260A6 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		6C674A1F197A3B520036898E /* TBTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableView.h; sourceTree = "<group>"; };
+		6C674A20197A3B520036898E /* TBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableView.m; sourceTree = "<group>"; };
 		6CBE5C6A19765DF3005DDB86 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
 		6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesViewController.m; sourceTree = "<group>"; };
 		6CBE5C6D19765E2B005DDB86 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */,
 				6CCBDF631977366F001AD2E2 /* HistoryViewController.h */,
 				6CCBDF641977366F001AD2E2 /* HistoryViewController.m */,
+				6C674A1F197A3B520036898E /* TBTableView.h */,
+				6C674A20197A3B520036898E /* TBTableView.m */,
 				6C594B481978F331000260A6 /* MapViewController.h */,
 				6C594B491978F331000260A6 /* MapViewController.m */,
 				07ADB07819765592002D80E0 /* UserData.h */,
@@ -447,6 +452,7 @@
 				6CBE5C91197668D2005DDB86 /* SDWebImageCompat.m in Sources */,
 				07ADB07A19765592002D80E0 /* UserData.m in Sources */,
 				07ADB03719764F9F002D80E0 /* main.m in Sources */,
+				6C674A21197A3B520036898E /* TBTableView.m in Sources */,
 				6CBE5C99197668D2005DDB86 /* UIImage+MultiFormat.m in Sources */,
 				6CBE5C98197668D2005DDB86 /* UIImage+GIF.m in Sources */,
 			);

@@ -39,14 +39,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    TBTableView *tableView = (TBTableView *)[self friendsTableView];
+    tableView.tbDelegate = self;
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     [locationManager startUpdatingLocation];
     [locationManager stopUpdatingLocation];
-    location = [locationManager location];
 
     friends = [[NSMutableArray alloc]init];
     
@@ -128,6 +129,36 @@
     
     }
 }
+-(void)tableViewTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSArray *touchesArray = [touches allObjects];
+    
+    UITouch *touch = (UITouch *)[touchesArray lastObject];
+    CGPoint touchLocation = [touch locationInView:nil];
+    NSIndexPath *indexPath = [self.friendsTableView indexPathForRowAtPoint:touchLocation];
+    
+    if (indexPath) { //we are in a tableview cell, let the gesture be handled by the view
+        NSInteger friendCount = (NSInteger)[friends count];
+        if(friendCount > (int)indexPath.row){
+            location = [locationManager location];
+            
+            recipient = [friends objectAtIndex:indexPath.row];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
+            placesVC.tapLocation = touchLocation;
+            placesVC.recipient = recipient;
+            placesVC.latitude = location.coordinate.latitude;
+            placesVC.longitude = location.coordinate.longitude;
+            NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
+            placesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:placesVC animated:YES completion:nil];
+            
+        }
+        
+    }
+    
+
+}
+
  #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -135,7 +166,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [friends count]+2;
+    return [friends count]+1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
@@ -179,20 +210,21 @@
         cell.backgroundColor = [AppDelegate myColor2];
         label.textColor = [UIColor whiteColor];
     }
-    else if(friendCount < (int)indexPath.row ){
-        label.text = @"History";
-        label.textColor = [UIColor whiteColor];
-        cell.backgroundColor = [AppDelegate myColor1];
-
-    }
+//    else if(friendCount < (int)indexPath.row ){
+//        label.text = @"History";
+//        label.textColor = [UIColor whiteColor];
+//        cell.backgroundColor = [AppDelegate myColor1];
+//
+//    }
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger friendCount = (NSInteger)[friends count];
     if(friendCount > (int)indexPath.row){
+        location = [locationManager location];
+
         recipient = [friends objectAtIndex:indexPath.row];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
@@ -200,22 +232,22 @@
         placesVC.latitude = location.coordinate.latitude;
         placesVC.longitude = location.coordinate.longitude;
         NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
-
+        placesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:placesVC animated:YES completion:nil];
     
     }
     else if(friendCount == (int)indexPath.row ){
         [self addFriend];
     }
-    else if(friendCount < (int)indexPath.row ){
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        HistoryViewController *historyVC = (HistoryViewController*)[storyboard instantiateViewControllerWithIdentifier:@"historyVC"];
-        UserData *userData =[UserData sharedManager];
-        historyVC.yofromHistory = userData.history;
-        
-        [self presentViewController:historyVC animated:YES completion:nil];
-
-    }
+//    else if(friendCount < (int)indexPath.row ){
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        HistoryViewController *historyVC = (HistoryViewController*)[storyboard instantiateViewControllerWithIdentifier:@"historyVC"];
+//        UserData *userData =[UserData sharedManager];
+//        historyVC.yofromHistory = userData.history;
+//        
+//        [self presentViewController:historyVC animated:YES completion:nil];
+//
+//    }
 }
 
 

@@ -20,5 +20,6 @@ typedef void (^completion)(BOOL);
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic) float longitude;
 @property (nonatomic) float latitude;
+@property (nonatomic) CGPoint tapLocation;
 
 @end

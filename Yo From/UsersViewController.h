@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-@interface UsersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *friendsTableView;
+#import "TBTableView.h"
+@interface UsersViewController : UIViewController <UITableViewDataSource, TBTableViewDelegate,CLLocationManagerDelegate>
+@property (weak, nonatomic) IBOutlet TBTableView *friendsTableView;
 @property (nonatomic, strong) NSString *username;
 
 @end

@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import <Parse/Parse.h>
 #import "UsersViewController.h"
+#import <UIKit/UIGestureRecognizerSubclass.h>
 @interface PlacesViewController ()
 
 @end
@@ -34,13 +35,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                               initWithTarget:self action:@selector(longPressGestureRecognized:)];
+   // longPress.state = UIGestureRecognizerStateBegan;
+   /// [self longPressGestureRecognized:longPress];
+ 
+    [longPress setAllowableMovement:500.f];
+    
+    [self.placesTableView addGestureRecognizer:longPress];
+       [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
         NSLog(@"places: %@", places);
         [placesTableView reloadData];
 
     }];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [placesTableView reloadData];
+    NSIndexPath *indexPath = [self.placesTableView indexPathForRowAtPoint:_tapLocation];
+    [self.placesTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+
+    [super viewWillAppear:animated];
 }
 
 -(void)fetchPlacesWithLat:(float)lat andLong:(float)lng completionBlock:(void (^)(BOOL success))completionBlock{
@@ -59,8 +75,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if([places count] >= 20){
-        return 20;
+    if([places count] >= 7){
+        return 7;
     }
     else{
         return [places count];
@@ -100,41 +116,102 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
-    
-    // Create our Installation query
-    PFQuery *pushQuery = [PFInstallation query];
-    [pushQuery whereKey:@"username" equalTo:_recipient];
-    
-    // Send push notification to query
-    PFPush *push = [[PFPush alloc] init];
-    [push setQuery:pushQuery];
-    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
-                            stringForKey:@"preferenceName"];
-    NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
+//    
+//    // Create our Installation query
+//    PFQuery *pushQuery = [PFInstallation query];
+//    [pushQuery whereKey:@"username" equalTo:_recipient];
+//    
+//    // Send push notification to query
+//    PFPush *push = [[PFPush alloc] init];
+//    [push setQuery:pushQuery];
+//    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+//                            stringForKey:@"preferenceName"];
+//    NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+//
+//    [push setMessage:string];
+//    [push sendPushInBackground];
+//    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 150, 50)];
+//    sentLabel.center = self.view.center;
+//    sentLabel.text = @"Yo Sent!";
+//    sentLabel.font = [UIFont systemFontOfSize:30.0];
+//    sentLabel.backgroundColor = [UIColor lightGrayColor];
+//    sentLabel.textColor = [UIColor whiteColor];
+//    sentLabel.textAlignment = NSTextAlignmentCenter;
+//    sentLabel.alpha = 0.f;
+//    [self.view addSubview:sentLabel];
+//
+//    [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        [sentLabel setAlpha:0.7f];
+//    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.2f delay:0.6f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            [sentLabel setAlpha:0.f];
+//        } completion:^(BOOL finished) {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }];
+//    }];
+}
 
-    [push setMessage:string];
-    [push sendPushInBackground];
-    UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 150, 50)];
-    sentLabel.center = self.view.center;
-    sentLabel.text = @"Yo Sent!";
-    sentLabel.font = [UIFont systemFontOfSize:30.0];
-    sentLabel.backgroundColor = [UIColor lightGrayColor];
-    sentLabel.textColor = [UIColor whiteColor];
-    sentLabel.textAlignment = NSTextAlignmentCenter;
-    sentLabel.alpha = 0.f;
-    [self.view addSubview:sentLabel];
-
-    [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [sentLabel setAlpha:0.7f];
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2f delay:0.6f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [sentLabel setAlpha:0.f];
-        } completion:^(BOOL finished) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-    }];
+- (IBAction)longPressGestureRecognized:(id)sender {
+    
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+    UIGestureRecognizerState state = longPress.state;
+    
+    CGPoint locations = [longPress locationInView:self.placesTableView];
+    NSIndexPath *indexPath = [self.placesTableView indexPathForRowAtPoint:locations];
+    
+    switch (state) {
+        case UIGestureRecognizerStateBegan: {
+            if (indexPath) {
+                [self.placesTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+             
+            }
+            break;
+        }
+        case UIGestureRecognizerStateChanged: {
+                [self.placesTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+            break;
+        }
+        default: {
+            [self.placesTableView deselectRowAtIndexPath:indexPath animated:YES];
+            NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
+            
+            // Create our Installation query
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"username" equalTo:_recipient];
+            
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery];
+            NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                                    stringForKey:@"preferenceName"];
+            NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+            
+            [push setMessage:string];
+            [push sendPushInBackground];
+            UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 150, 50)];
+            sentLabel.center = self.view.center;
+            sentLabel.text = @"Yo Sent!";
+            sentLabel.font = [UIFont systemFontOfSize:30.0];
+            sentLabel.backgroundColor = [UIColor lightGrayColor];
+            sentLabel.textColor = [UIColor whiteColor];
+            sentLabel.textAlignment = NSTextAlignmentCenter;
+            sentLabel.alpha = 0.f;
+            [self.view addSubview:sentLabel];
+            
+            [UIView animateWithDuration:0.2f delay:0.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+                [sentLabel setAlpha:0.7f];
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.2f delay:0.6f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    [sentLabel setAlpha:0.f];
+                } completion:^(BOOL finished) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }];
+            break;
+        }
+    }
 }
 
 
