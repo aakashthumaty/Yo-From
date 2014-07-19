@@ -88,7 +88,7 @@
     if (buttonIndex == 1 && actionSheet.alertViewStyle == UIAlertViewStylePlainTextInput) {
     
     UITextField *textField = [actionSheet textFieldAtIndex:0];
-    NSLog(@"textfield text: %@, %@", textField.text, _username);
+    //NSLog(@"textfield text: %@, %@", textField.text, _username);
     if(![friends containsObject:textField.text]){
         PFQuery *query = [PFQuery queryWithClassName:@"user"];
         [query whereKey:@"username" equalTo:textField.text];
@@ -192,7 +192,7 @@
 
     UILabel *label = (UILabel*) [cell viewWithTag:101];
     NSInteger friendCount = (NSInteger)[friends count];
-    NSLog(@"friendcount: %d", friendCount -1 == (int)indexPath.row);
+    //NSLog(@"friendcount: %d", friendCount -1 == (int)indexPath.row);
     if(friendCount > (int)indexPath.row){
         label.text = [friends objectAtIndex:indexPath.row];
         if(indexPath.row % 2 == 0){//rgb(52, 152, 219)
@@ -233,6 +233,7 @@
         placesVC.longitude = location.coordinate.longitude;
         NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
         placesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
         [self presentViewController:placesVC animated:YES completion:nil];
     
     }

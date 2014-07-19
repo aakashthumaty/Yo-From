@@ -7,7 +7,7 @@
 //
 
 #import "HistoryViewController.h"
-
+#import "UserData.h"
 @interface HistoryViewController ()
 
 @end
@@ -33,7 +33,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_yofromHistory count];
+    UserData *userData = [UserData sharedManager];
+    //NSLog(@"userdata from history %@", userData.history);
+
+    return [userData.history count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
@@ -44,6 +47,11 @@
     UIView *view = [[UIView alloc] init];
     return view;
 }
+- (IBAction)close:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"historyCell";
@@ -54,13 +62,17 @@
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
     }
-    
+    UserData *userData = [UserData sharedManager];
+
+    //NSLog(@"userdata frm cellforrow %@", [userData.history objectAtIndex:indexPath.row]);
+
     UILabel *timeLabel = (UILabel*) [cell viewWithTag:101];
-    timeLabel.text = [[_yofromHistory objectAtIndex:indexPath.row]objectForKey:@"timestamp"];
+    timeLabel.text = [[userData.history objectAtIndex:indexPath.row]objectForKey:@"timestamp"];
     
     UILabel *textLabel = (UILabel*) [cell viewWithTag:102];
-    textLabel.text = [[_yofromHistory objectAtIndex:indexPath.row]objectForKey:@"text"];
+    textLabel.text = [[userData.history objectAtIndex:indexPath.row]objectForKey:@"text"];
     
+    [textLabel sizeToFit];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

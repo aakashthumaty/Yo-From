@@ -38,7 +38,6 @@
 		07ADB08A19766299002D80E0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ADB08919766299002D80E0 /* Parse.framework */; };
 		6C4B05181978E12800357A14 /* close_nav_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4B05171978E12800357A14 /* close_nav_blue.png */; };
 		6C594B471978F2D8000260A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C594B461978F2D8000260A6 /* MapKit.framework */; };
-		6C594B4A1978F331000260A6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C594B491978F331000260A6 /* MapViewController.m */; };
 		6C674A21197A3B520036898E /* TBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C674A20197A3B520036898E /* TBTableView.m */; };
 		6CBE5C6C19765DF3005DDB86 /* PlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */; };
 		6CBE5C6F19765E2B005DDB86 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */; };
@@ -107,8 +106,6 @@
 		07ADB08919766299002D80E0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6C4B05171978E12800357A14 /* close_nav_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_nav_blue.png; sourceTree = "<group>"; };
 		6C594B461978F2D8000260A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		6C594B481978F331000260A6 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		6C594B491978F331000260A6 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		6C674A1F197A3B520036898E /* TBTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTableView.h; sourceTree = "<group>"; };
 		6C674A20197A3B520036898E /* TBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTableView.m; sourceTree = "<group>"; };
 		6CBE5C6A19765DF3005DDB86 /* PlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesViewController.h; sourceTree = "<group>"; };
@@ -247,8 +244,6 @@
 				6CCBDF641977366F001AD2E2 /* HistoryViewController.m */,
 				6C674A1F197A3B520036898E /* TBTableView.h */,
 				6C674A20197A3B520036898E /* TBTableView.m */,
-				6C594B481978F331000260A6 /* MapViewController.h */,
-				6C594B491978F331000260A6 /* MapViewController.m */,
 				07ADB07819765592002D80E0 /* UserData.h */,
 				07ADB07919765592002D80E0 /* UserData.m */,
 				07ADB03F19764F9F002D80E0 /* Images.xcassets */,
@@ -379,7 +374,7 @@
 				ORGANIZATIONNAME = Aakash;
 				TargetAttributes = {
 					07ADB02419764F9F002D80E0 = {
-						DevelopmentTeam = MRQT579S8E;
+						DevelopmentTeam = 6K2U3WGB8U;
 					};
 					07ADB04419764F9F002D80E0 = {
 						TestTargetID = 07ADB02419764F9F002D80E0;
@@ -439,7 +434,6 @@
 				6CCBDF651977366F001AD2E2 /* HistoryViewController.m in Sources */,
 				6CBE5C94197668D2005DDB86 /* SDWebImageDownloaderOperation.m in Sources */,
 				6CBE5C6C19765DF3005DDB86 /* PlacesViewController.m in Sources */,
-				6C594B4A1978F331000260A6 /* MapViewController.m in Sources */,
 				6CBE5C97197668D2005DDB86 /* UIButton+WebCache.m in Sources */,
 				6CBE5C8F197668D2005DDB86 /* NSData+ImageContentType.m in Sources */,
 				6CBE5C96197668D2005DDB86 /* SDWebImagePrefetcher.m in Sources */,
@@ -531,7 +525,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -564,7 +558,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -575,7 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aakash  Thumaty (DL9R5P72BZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -586,7 +580,7 @@
 				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
 				INFOPLIST_FILE = "Yo From/Yo From-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -596,7 +590,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aakash  Thumaty (DL9R5P72BZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -607,7 +601,7 @@
 				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
 				INFOPLIST_FILE = "Yo From/Yo From-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

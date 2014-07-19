@@ -31,9 +31,7 @@
 		NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (userInfo != nil)
 		{
-//			NSLog(@"Launched from push notification: %@", userInfo);
-//            UserData *userData = [UserData sharedManager];
-//            [userData.history addObject:@{@"text":[userInfo objectForKey:@"alert"], @"timestamp": @"nil"}];
+
 		}
 	}
     
@@ -74,6 +72,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
@@ -175,7 +174,7 @@
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
-    NSLog(@"got here");
+    //NSLog(@"got here");
     // Store the deviceToken in the current installation and save it to Parse.
     [PFPush storeDeviceToken:newDeviceToken];
 
@@ -187,10 +186,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken {
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"userinfo: %@", userInfo);
+    //NSLog(@"userinfo: %@", userInfo);
     [PFPush handlePush:userInfo];
-//    UserData *userData = [UserData sharedManager];
-//    [userData.history addObject:@{@"text":[userInfo objectForKey:@"alert"], @"timestamp": @"nil"}];
-//    
+
+    UserData *userData = [UserData sharedManager];
+    //NSLog(@"alert: %@",[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+    NSString *dateStr = @"2012-07-16 07:33:01";
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormatter1 dateFromString:dateStr];
+    //NSLog(@"date : %@",date);
+    
+    NSTimeZone *currentTimeZone = [NSTimeZone localTimeZone];
+    NSTimeZone *utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    
+    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:date];
+    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:date];
+    NSTimeInterval gmtInterval = currentGMTOffset - gmtOffset;
+
+    NSDate *destinationDate = [[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:date];
+    
+    NSDateFormatter *dateFormatters = [[NSDateFormatter alloc] init];
+    [dateFormatters setDateFormat:@"dd-MMM-yyyy hh:mm"];
+    [dateFormatters setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatters setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatters setDoesRelativeDateFormatting:YES];
+    [dateFormatters setTimeZone:[NSTimeZone systemTimeZone]];
+    dateStr = [dateFormatters stringFromDate: destinationDate];
+    //NSLog(@"DateString : %@", dateStr);
+    [userData.history addObject:@{@"text":[[userInfo objectForKey:@"aps"] objectForKey:@"alert"], @"timestamp": dateStr}];
+    //NSLog(@"userdata %@", userData.history);
+
 }
 @end
