@@ -36,7 +36,7 @@
     [super viewDidLoad];
 
     [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
-        NSLog(@"places: %@", places);
+        //NSLog(@"places: %@", places);
         [placesTableView reloadData];
 
     }];
@@ -101,7 +101,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
+    //NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
     
     // Create our Installation query
     PFQuery *pushQuery = [PFInstallation query];

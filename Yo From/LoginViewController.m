@@ -76,7 +76,7 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     currentInstallation[@"username"] = string;
     [currentInstallation saveInBackground];
-        NSLog(@"username: %@", string);
+        //NSLog(@"username: %@", string);
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UsersViewController *userVC = (UsersViewController*)[storyboard instantiateViewControllerWithIdentifier:@"usersVC"];
