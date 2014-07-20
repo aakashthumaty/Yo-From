@@ -130,31 +130,31 @@
     }
 }
 -(void)tableViewTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSArray *touchesArray = [touches allObjects];
-    
-    UITouch *touch = (UITouch *)[touchesArray lastObject];
-    CGPoint touchLocation = [touch locationInView:nil];
-    NSIndexPath *indexPath = [self.friendsTableView indexPathForRowAtPoint:touchLocation];
-    
-    if (indexPath) { //we are in a tableview cell, let the gesture be handled by the view
-        NSInteger friendCount = (NSInteger)[friends count];
-        if(friendCount > (int)indexPath.row){
-            location = [locationManager location];
-            
-            recipient = [friends objectAtIndex:indexPath.row];
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
-            placesVC.tapLocation = touchLocation;
-            placesVC.recipient = recipient;
-            placesVC.latitude = location.coordinate.latitude;
-            placesVC.longitude = location.coordinate.longitude;
-            NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
-            placesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            [self presentViewController:placesVC animated:YES completion:nil];
-            
-        }
-        
-    }
+//    NSArray *touchesArray = [touches allObjects];
+//    
+//    UITouch *touch = (UITouch *)[touchesArray lastObject];
+//    CGPoint touchLocation = [touch locationInView:nil];
+//    NSIndexPath *indexPath = [self.friendsTableView indexPathForRowAtPoint:touchLocation];
+//    
+//    if (indexPath) { //we are in a tableview cell, let the gesture be handled by the view
+//        NSInteger friendCount = (NSInteger)[friends count];
+//        if(friendCount > (int)indexPath.row){
+//            location = [locationManager location];
+//            
+//            recipient = [friends objectAtIndex:indexPath.row];
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            PlacesViewController *placesVC = (PlacesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"placesVC"];
+//            placesVC.tapLocation = touchLocation;
+//            placesVC.recipient = recipient;
+//            placesVC.latitude = location.coordinate.latitude;
+//            placesVC.longitude = location.coordinate.longitude;
+//            NSLog(@"%f, %f ", placesVC.latitude, placesVC.longitude);
+//            placesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//            [self presentViewController:placesVC animated:YES completion:nil];
+//            
+//        }
+//        
+//    }
     
 
 }
