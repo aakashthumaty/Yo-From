@@ -45,11 +45,7 @@
     
   //  [self.placesTableView addGestureRecognizer:longPress];
     
-    [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
-        NSLog(@"places: %@", places);
-        [placesTableView reloadData];
 
-    }];
     
 }
 
@@ -58,12 +54,19 @@
 //    NSIndexPath *indexPath = [self.placesTableView indexPathForRowAtPoint:_tapLocation];
 //    [self.placesTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 
+    
+    [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
+        NSLog(@"places: %@", places);
+        [placesTableView reloadData];
+        
+    }];
+    
     [super viewWillAppear:animated];
 }
 
 -(void)fetchPlacesWithLat:(float)lat andLong:(float)lng completionBlock:(void (^)(BOOL success))completionBlock{
 
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]]];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=12&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]]];
     id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     places = [[[object objectForKey:@"response"] objectForKey:@"venues"]mutableCopy];
     completionBlock(YES);
@@ -76,22 +79,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if([places count] >= 9){
-        return 10;
+    if([places count] >= 12){
+        return 13;
     }
     else{
         return [places count]+1;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    if(indexPath.row == [places count]){
+        return 63;
+    }else{
+        return 50;
+    }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] init];
-    return view;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   
