@@ -78,7 +78,7 @@
     if(indexPath.row == [_places count]){
         return 70;
     }else{
-        return 60;
+        return 50;
     }
 }
 
@@ -108,25 +108,25 @@
                     reuseIdentifier:CellIdentifier];
         }
     
-        if (indexPath.row != 1) {
+        if (indexPath.row != 0) {
 
-    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
-    nameLabel.adjustsFontSizeToFitWidth = YES;
-    NSDictionary *place = [_places objectAtIndex:indexPath.row];
-    NSString *lowercase = [[place objectForKey:@"name"] lowercaseString];
-    nameLabel.text = lowercase;
-        
-        
-    UIImageView *iconImage = (UIImageView *)[cell viewWithTag:102];
-    iconImage.contentMode = UIViewContentModeScaleAspectFill;
+            UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
+            nameLabel.adjustsFontSizeToFitWidth = YES;
+            NSDictionary *place = [_places objectAtIndex:indexPath.row];
+            NSString *lowercase = [[place objectForKey:@"name"] lowercaseString];
+            nameLabel.text = lowercase;
+                
+                
+            UIImageView *iconImage = (UIImageView *)[cell viewWithTag:102];
+            iconImage.contentMode = UIViewContentModeScaleAspectFill;
 
-    NSString *prefix = [[[[place objectForKey:@"categories"]firstObject]objectForKey:@"icon"]objectForKey:@"prefix"];
+            NSString *prefix = [[[[place objectForKey:@"categories"]firstObject]objectForKey:@"icon"]objectForKey:@"prefix"];
 
-    NSString *suffix = [[[[place objectForKey:@"categories"]firstObject]objectForKey:@"icon"]objectForKey:@"suffix"];
-    
-    NSString *url = [prefix stringByReplacingOccurrencesOfString:@"ss1.4sqi.net" withString:@"foursquare.com"];
-    
-    [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]]];
+            NSString *suffix = [[[[place objectForKey:@"categories"]firstObject]objectForKey:@"icon"]objectForKey:@"suffix"];
+            
+            NSString *url = [prefix stringByReplacingOccurrencesOfString:@"ss1.4sqi.net" withString:@"foursquare.com"];
+            
+            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]]];
         }
     else{
             UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
