@@ -155,7 +155,7 @@
             
             [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]] placeholderImage:[UIImage imageNamed:@"Icon-60.png"]];
         }
-    else{
+    else{//to sync
             UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
             nameLabel.adjustsFontSizeToFitWidth = YES;
             NSString *lowercase = [[_places objectAtIndex:indexPath.row] lowercaseString];
