@@ -151,6 +151,8 @@
     if(indexPath.row == [_places count]){
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
+        
+        if(indexPath.row != 0){
     NSLog(@"send to %@ from %@", _recipient, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]);
     
     // Create our Installation query
@@ -163,9 +165,29 @@
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"preferenceName"];
     NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+            
+            [push setMessage:string];
+            [push sendPushInBackground];
+    }
+        else if(indexPath.row == 0)
+        {
+            NSLog(@"send to %@ from %@", _recipient, [_places objectAtIndex:0]);
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"username" equalTo:_recipient];
+            
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery];
+            NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                                    stringForKey:@"preferenceName"];
+            NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [_places objectAtIndex:0]];
+            
+            [push setMessage:string];
+            [push sendPushInBackground];
 
-    [push setMessage:string];
-    [push sendPushInBackground];
+
+        }
+
     UILabel *sentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 240, 180, 50)];
     sentLabel.center = self.view.center;
     sentLabel.text = @"Yo Sent!";

@@ -291,7 +291,7 @@
     else{
         id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         places = [[[object objectForKey:@"response"] objectForKey:@"venues"]mutableCopy];
-        [places insertObject:[[[places objectAtIndex:0] objectForKey:@"location"] objectForKey:@"city"] atIndex:1];
+        [places insertObject:[[[places objectAtIndex:0] objectForKey:@"location"] objectForKey:@"city"] atIndex:0];
         NSLog(@"places: %@", places);
         completionBlock(YES);
     }
