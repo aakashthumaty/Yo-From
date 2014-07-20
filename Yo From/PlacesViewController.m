@@ -18,7 +18,6 @@
 @implementation PlacesViewController {
     CLLocationManager *locationManager;
     CLLocation *location;
-    NSMutableArray *places;
     NSMutableArray *placesIcons;
 
 }
@@ -54,22 +53,7 @@
 //    NSIndexPath *indexPath = [self.placesTableView indexPathForRowAtPoint:_tapLocation];
 //    [self.placesTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 
-    
-    [self fetchPlacesWithLat:_latitude andLong:_longitude completionBlock:^(BOOL success) {
-        NSLog(@"places: %@", places);
-        [placesTableView reloadData];
-        
-    }];
-    
     [super viewWillAppear:animated];
-}
-
--(void)fetchPlacesWithLat:(float)lat andLong:(float)lng completionBlock:(void (^)(BOOL success))completionBlock{
-
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=12&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]]];
-    id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    places = [[[object objectForKey:@"response"] objectForKey:@"venues"]mutableCopy];
-    completionBlock(YES);
 }
 
 #pragma mark - Table view data source
@@ -79,25 +63,29 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if([places count] >= 12){
+    if(_places != nil)
+    {
+    if([_places count] >= 12){
         return 13;
     }
     else{
-        return [places count]+1;
+        return [_places count]+1;
     }
+    }
+    return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == [places count]){
-        return 63;
+    if(indexPath.row == [_places count]){
+        return 70;
     }else{
-        return 50;
+        return 60;
     }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  
-    if(indexPath.row == [places count]){
+    //if(_places != nil){
+    if(indexPath.row == [_places count]){
         
         static NSString *CellIdentifier = @"cancelCell";
         
@@ -107,7 +95,9 @@
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
         }
+      
         return cell;
+        
     }else{
         static NSString *CellIdentifier = @"placeCell";
         
@@ -117,12 +107,15 @@
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
         }
+    
+        if (indexPath.row != 1) {
 
     UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
     nameLabel.adjustsFontSizeToFitWidth = YES;
-    NSDictionary *place = [places objectAtIndex:indexPath.row];
+    NSDictionary *place = [_places objectAtIndex:indexPath.row];
     NSString *lowercase = [[place objectForKey:@"name"] lowercaseString];
     nameLabel.text = lowercase;
+        
         
     UIImageView *iconImage = (UIImageView *)[cell viewWithTag:102];
     iconImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -134,18 +127,31 @@
     NSString *url = [prefix stringByReplacingOccurrencesOfString:@"ss1.4sqi.net" withString:@"foursquare.com"];
     
     [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]]];
+        }
+    else{
+            UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
+            nameLabel.adjustsFontSizeToFitWidth = YES;
+            NSString *lowercase = [[_places objectAtIndex:indexPath.row] lowercaseString];
+            nameLabel.text = lowercase;
+            UIImageView *iconImage = (UIImageView *)[cell viewWithTag:102];
+            iconImage.contentMode = UIViewContentModeScaleAspectFill;
+            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://foursquare.com/img/categories_v2/building/cityhall_bg_64.png"]]];
+
+
+    }
         return cell;
 
     }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(indexPath.row == [places count]){
+    if(indexPath.row == [_places count]){
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
-    NSLog(@"send to %@ from %@", _recipient, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]);
+    NSLog(@"send to %@ from %@", _recipient, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]);
     
     // Create our Installation query
     PFQuery *pushQuery = [PFInstallation query];
@@ -156,7 +162,7 @@
     [push setQuery:pushQuery];
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"preferenceName"];
-    NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]];
 
     [push setMessage:string];
     [push sendPushInBackground];

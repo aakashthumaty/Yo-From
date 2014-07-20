@@ -70,20 +70,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07ADB02519764F9F002D80E0 /* Yo From.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo From.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07ADB02519764F9F002D80E0 /* YoFrom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoFrom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07ADB02819764F9F002D80E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07ADB02A19764F9F002D80E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		07ADB02C19764F9F002D80E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		07ADB02E19764F9F002D80E0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		07ADB03219764F9F002D80E0 /* Yo From-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Yo From-Info.plist"; sourceTree = "<group>"; };
+		07ADB03219764F9F002D80E0 /* YoFrom-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YoFrom-Info.plist"; sourceTree = "<group>"; };
 		07ADB03419764F9F002D80E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		07ADB03619764F9F002D80E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		07ADB03819764F9F002D80E0 /* Yo From-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo From-Prefix.pch"; sourceTree = "<group>"; };
+		07ADB03819764F9F002D80E0 /* YoFrom-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YoFrom-Prefix.pch"; sourceTree = "<group>"; };
 		07ADB03919764F9F002D80E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07ADB03A19764F9F002D80E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		07ADB03D19764F9F002D80E0 /* Yo_From.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Yo_From.xcdatamodel; sourceTree = "<group>"; };
 		07ADB03F19764F9F002D80E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		07ADB04519764F9F002D80E0 /* Yo FromTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yo FromTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07ADB04519764F9F002D80E0 /* YoFromTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoFromTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07ADB04619764F9F002D80E0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		07ADB04F19764FA0002D80E0 /* Yo FromTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Yo FromTests-Info.plist"; sourceTree = "<group>"; };
 		07ADB05119764FA0002D80E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 		07ADB02619764F9F002D80E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07ADB02519764F9F002D80E0 /* Yo From.app */,
-				07ADB04519764F9F002D80E0 /* Yo FromTests.xctest */,
+				07ADB02519764F9F002D80E0 /* YoFrom.app */,
+				07ADB04519764F9F002D80E0 /* YoFromTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,10 +236,10 @@
 				07ADB05D19764FC3002D80E0 /* LoginViewController.h */,
 				07ADB05E19764FC3002D80E0 /* LoginViewController.m */,
 				6CCBD5AA19765AF800F0E50A /* Main.storyboard */,
-				6CBE5C6A19765DF3005DDB86 /* PlacesViewController.h */,
-				6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */,
 				6CBE5C6D19765E2B005DDB86 /* UsersViewController.h */,
 				6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */,
+				6CBE5C6A19765DF3005DDB86 /* PlacesViewController.h */,
+				6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */,
 				6C674A22197B50FC0036898E /* unused stuff  */,
 				07ADB03F19764F9F002D80E0 /* Images.xcassets */,
 				07ADB03C19764F9F002D80E0 /* Yo_From.xcdatamodeld */,
@@ -252,10 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				6C4B05171978E12800357A14 /* close_nav_blue.png */,
-				07ADB03219764F9F002D80E0 /* Yo From-Info.plist */,
+				07ADB03219764F9F002D80E0 /* YoFrom-Info.plist */,
 				07ADB03319764F9F002D80E0 /* InfoPlist.strings */,
 				07ADB03619764F9F002D80E0 /* main.m */,
-				07ADB03819764F9F002D80E0 /* Yo From-Prefix.pch */,
+				07ADB03819764F9F002D80E0 /* YoFrom-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -337,9 +337,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07ADB02419764F9F002D80E0 /* Yo From */ = {
+		07ADB02419764F9F002D80E0 /* YoFrom */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07ADB05719764FA0002D80E0 /* Build configuration list for PBXNativeTarget "Yo From" */;
+			buildConfigurationList = 07ADB05719764FA0002D80E0 /* Build configuration list for PBXNativeTarget "YoFrom" */;
 			buildPhases = (
 				07ADB02119764F9F002D80E0 /* Sources */,
 				07ADB02219764F9F002D80E0 /* Frameworks */,
@@ -349,14 +349,14 @@
 			);
 			dependencies = (
 			);
-			name = "Yo From";
+			name = YoFrom;
 			productName = "Yo From";
-			productReference = 07ADB02519764F9F002D80E0 /* Yo From.app */;
+			productReference = 07ADB02519764F9F002D80E0 /* YoFrom.app */;
 			productType = "com.apple.product-type.application";
 		};
-		07ADB04419764F9F002D80E0 /* Yo FromTests */ = {
+		07ADB04419764F9F002D80E0 /* YoFromTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07ADB05A19764FA0002D80E0 /* Build configuration list for PBXNativeTarget "Yo FromTests" */;
+			buildConfigurationList = 07ADB05A19764FA0002D80E0 /* Build configuration list for PBXNativeTarget "YoFromTests" */;
 			buildPhases = (
 				07ADB04119764F9F002D80E0 /* Sources */,
 				07ADB04219764F9F002D80E0 /* Frameworks */,
@@ -367,9 +367,9 @@
 			dependencies = (
 				07ADB04C19764FA0002D80E0 /* PBXTargetDependency */,
 			);
-			name = "Yo FromTests";
+			name = YoFromTests;
 			productName = "Yo FromTests";
-			productReference = 07ADB04519764F9F002D80E0 /* Yo FromTests.xctest */;
+			productReference = 07ADB04519764F9F002D80E0 /* YoFromTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -389,7 +389,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07ADB02019764F9F002D80E0 /* Build configuration list for PBXProject "Yo From" */;
+			buildConfigurationList = 07ADB02019764F9F002D80E0 /* Build configuration list for PBXProject "YoFrom" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -401,8 +401,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07ADB02419764F9F002D80E0 /* Yo From */,
-				07ADB04419764F9F002D80E0 /* Yo FromTests */,
+				07ADB02419764F9F002D80E0 /* YoFrom */,
+				07ADB04419764F9F002D80E0 /* YoFromTests */,
 			);
 		};
 /* End PBXProject section */
@@ -473,7 +473,7 @@
 /* Begin PBXTargetDependency section */
 		07ADB04C19764FA0002D80E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 07ADB02419764F9F002D80E0 /* Yo From */;
+			target = 07ADB02419764F9F002D80E0 /* YoFrom */;
 			targetProxy = 07ADB04B19764FA0002D80E0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -585,9 +585,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
-				INFOPLIST_FILE = "Yo From/Yo From-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Yo From/YoFrom-Prefix.pch";
+				INFOPLIST_FILE = "Yo From/YoFrom-Info.plist";
+				PRODUCT_NAME = YoFrom;
 				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
 				WRAPPER_EXTENSION = app;
 			};
@@ -606,9 +606,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
-				INFOPLIST_FILE = "Yo From/Yo From-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Yo From/YoFrom-Prefix.pch";
+				INFOPLIST_FILE = "Yo From/YoFrom-Info.plist";
+				PRODUCT_NAME = YoFrom;
 				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
 				WRAPPER_EXTENSION = app;
 			};
@@ -630,7 +630,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Yo FromTests/Yo FromTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YoFromTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -648,7 +648,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yo From/Yo From-Prefix.pch";
 				INFOPLIST_FILE = "Yo FromTests/Yo FromTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YoFromTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -657,7 +657,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07ADB02019764F9F002D80E0 /* Build configuration list for PBXProject "Yo From" */ = {
+		07ADB02019764F9F002D80E0 /* Build configuration list for PBXProject "YoFrom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07ADB05519764FA0002D80E0 /* Debug */,
@@ -666,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07ADB05719764FA0002D80E0 /* Build configuration list for PBXNativeTarget "Yo From" */ = {
+		07ADB05719764FA0002D80E0 /* Build configuration list for PBXNativeTarget "YoFrom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07ADB05819764FA0002D80E0 /* Debug */,
@@ -675,7 +675,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07ADB05A19764FA0002D80E0 /* Build configuration list for PBXNativeTarget "Yo FromTests" */ = {
+		07ADB05A19764FA0002D80E0 /* Build configuration list for PBXNativeTarget "YoFromTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07ADB05B19764FA0002D80E0 /* Debug */,

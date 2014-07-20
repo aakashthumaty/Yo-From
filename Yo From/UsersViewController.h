@@ -12,5 +12,6 @@
 @interface UsersViewController : UIViewController <UITableViewDataSource, TBTableViewDelegate,CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet TBTableView *friendsTableView;
 @property (nonatomic, strong) NSString *username;
-
+@property (nonatomic) float longitude;
+@property (nonatomic) float latitude;
 @end

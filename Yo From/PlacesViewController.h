@@ -18,8 +18,7 @@ typedef void (^completion)(BOOL);
 @property (weak, nonatomic) IBOutlet UITableView *placesTableView;
 @property (nonatomic, retain) NSString *recipient;
 @property (nonatomic, retain) NSString *username;
-@property (nonatomic) float longitude;
-@property (nonatomic) float latitude;
+@property (nonatomic, retain) NSMutableArray *places;
 @property (nonatomic) CGPoint tapLocation;
 
 @end
