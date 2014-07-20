@@ -59,9 +59,7 @@
 }
 
 -(void)fetchPlacesWithLat:(float)lat andLong:(float)lng completionBlock:(void (^)(BOOL success))completionBlock{
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=11&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]]];
-    NSLog(@"%@",[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=11&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]);
-    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=15&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]]];
     if(data == nil)
     {
         UIAlertView *alert = [[UIAlertView alloc]
@@ -94,8 +92,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(_places != nil)
     {
-    if([_places count] >= 12){
-        return 13;
+    if([_places count] >= 15){
+        return 16;
     }
     else{
         return [_places count]+1;
@@ -155,7 +153,7 @@
             
             NSString *url = [prefix stringByReplacingOccurrencesOfString:@"ss1.4sqi.net" withString:@"foursquare.com"];
             
-            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]] placeholderImage:[UIImage imageNamed:@"icon-60.png"]];
+            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]] placeholderImage:[UIImage imageNamed:@"Icon-60.png"]];
         }
     else{
             UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
