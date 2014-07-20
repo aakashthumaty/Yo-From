@@ -51,6 +51,11 @@
     [locationManager stopUpdatingLocation];
 
     friends = [[NSMutableArray alloc]init];
+    _username = [[NSUserDefaults standardUserDefaults]
+                                        stringForKey:@"preferenceName"];
+    _userLabel.text = [NSString stringWithFormat:@"user: %@",_username];
+    _userLabel.adjustsFontSizeToFitWidth = YES;
+
     
 }
 

@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic) float longitude;
 @property (nonatomic) float latitude;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @end

@@ -76,7 +76,6 @@
         id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         _places = [[[object objectForKey:@"response"] objectForKey:@"venues"]mutableCopy];
         [_places insertObject:[[[_places objectAtIndex:0] objectForKey:@"location"] objectForKey:@"city"] atIndex:0];
-        NSLog(@"places: %@", _places);
         completionBlock(YES);
     }
     
@@ -93,10 +92,10 @@
     if(_places != nil)
     {
     if([_places count] >= 15){
-        return 16;
+        return 17;
     }
     else{
-        return [_places count]+1;
+        return [_places count]+2;
     }
     }
     return 1;
