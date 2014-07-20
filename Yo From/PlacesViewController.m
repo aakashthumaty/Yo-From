@@ -191,7 +191,7 @@
     [push setQuery:pushQuery];
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"preferenceName"];
-    NSString *string = [NSString stringWithFormat:@"%@ @ %@", savedValue, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]];
+    NSString *string = [NSString stringWithFormat:@"%@ at %@", savedValue, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]];
             
             [push setMessage:string];
             [push sendPushInBackground];
