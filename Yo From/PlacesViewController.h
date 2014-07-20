@@ -21,4 +21,6 @@ typedef void (^completion)(BOOL);
 @property (nonatomic, retain) NSMutableArray *places;
 @property (nonatomic) CGPoint tapLocation;
 
+@property (nonatomic) float lat;
+@property (nonatomic) float lng;
 @end

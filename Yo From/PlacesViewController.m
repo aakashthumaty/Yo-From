@@ -18,7 +18,6 @@
 @implementation PlacesViewController {
     CLLocationManager *locationManager;
     CLLocation *location;
-    NSMutableArray *placesIcons;
 
 }
 @synthesize placesTableView;
@@ -54,7 +53,37 @@
 //    [self.placesTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 
     [super viewWillAppear:animated];
+    [self fetchPlacesWithLat:_lat andLong:_lng completionBlock:^(BOOL success) {
+        [self.placesTableView reloadData];
+    }];
 }
+
+-(void)fetchPlacesWithLat:(float)lat andLong:(float)lng completionBlock:(void (^)(BOOL success))completionBlock{
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=11&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]]];
+    NSLog(@"%@",[NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&intent=checkin&limit=11&sort_by_distance=1&client_id=S3TSP5JASASQ0HFTVEB0ZUFHBFJUTUB25JTIGNWVC5XUYTCT&client_secret=40I4A04HECJL3ZPKCZDZBQSYF2EVU4PM5B1PKJTXH55EZDED&v=20140719",lat,lng]);
+    
+    if(data == nil)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              
+                              initWithTitle:@"Oops."
+                              message:@"Looks like we can't find any places, sorry. Check if location services is turned on in Settings or check your network connection!"
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    else{
+        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        _places = [[[object objectForKey:@"response"] objectForKey:@"venues"]mutableCopy];
+        [_places insertObject:[[[_places objectAtIndex:0] objectForKey:@"location"] objectForKey:@"city"] atIndex:0];
+        NSLog(@"places: %@", _places);
+        completionBlock(YES);
+    }
+    
+}
+
 
 #pragma mark - Table view data source
 
@@ -126,7 +155,7 @@
             
             NSString *url = [prefix stringByReplacingOccurrencesOfString:@"ss1.4sqi.net" withString:@"foursquare.com"];
             
-            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]]];
+            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@bg_64%@",url,suffix]] placeholderImage:[UIImage imageNamed:@"icon-60.png"]];
         }
     else{
             UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
@@ -135,7 +164,7 @@
             nameLabel.text = lowercase;
             UIImageView *iconImage = (UIImageView *)[cell viewWithTag:102];
             iconImage.contentMode = UIViewContentModeScaleAspectFill;
-            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://foursquare.com/img/categories_v2/building/cityhall_bg_64.png"]]];
+            [iconImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://foursquare.com/img/categories_v2/building/cityhall_bg_64.png"]] placeholderImage:[UIImage imageNamed:@"icon-60.png"]];
 
 
     }
