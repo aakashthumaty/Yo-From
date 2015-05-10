@@ -191,8 +191,13 @@
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"preferenceName"];
     NSString *string = [NSString stringWithFormat:@"%@ at %@", savedValue, [[_places objectAtIndex:indexPath.row]objectForKey:@"name"]];
-            
-            [push setMessage:string];
+            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  string, @"alert",
+                                  @"export(1).aif", @"sound",
+                                  nil];
+            [push setData:data];
+
+            //[push setMessage:string];
             [push sendPushInBackground];
     }
         else if(indexPath.row == 0)

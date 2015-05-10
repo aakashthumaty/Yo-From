@@ -71,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0783884E197C50550032E5D5 /* export (1).aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "export (1).aif"; sourceTree = "<group>"; };
 		07ADB02519764F9F002D80E0 /* YoFrom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoFrom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07ADB02819764F9F002D80E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07ADB02A19764F9F002D80E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -185,17 +186,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0783883C197BC0110032E5D5 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = iPad;
-			sourceTree = "<group>";
-		};
 		07ADB01C19764F9F002D80E0 = {
 			isa = PBXGroup;
 			children = (
-				0783883C197BC0110032E5D5 /* iPad */,
 				07ADB03019764F9F002D80E0 /* Yo From */,
 				07ADB04D19764FA0002D80E0 /* Yo FromTests */,
 				07ADB02719764F9F002D80E0 /* Frameworks */,
@@ -250,6 +243,7 @@
 				6CBE5C6E19765E2B005DDB86 /* UsersViewController.m */,
 				6CBE5C6A19765DF3005DDB86 /* PlacesViewController.h */,
 				6CBE5C6B19765DF3005DDB86 /* PlacesViewController.m */,
+				0783884E197C50550032E5D5 /* export (1).aif */,
 				6C674A22197B50FC0036898E /* unused stuff  */,
 				07ADB03F19764F9F002D80E0 /* Images.xcassets */,
 				07ADB03C19764F9F002D80E0 /* Yo_From.xcdatamodeld */,
@@ -578,7 +572,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
+				PROVISIONING_PROFILE = "CF0E217D-C9AD-4344-B5BE-D017201DBC46";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -624,7 +618,7 @@
 				INFOPLIST_FILE = "Yo From/YoFrom-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = YoFrom;
-				PROVISIONING_PROFILE = "9DF855CA-ABDD-4105-914E-D4883D145440";
+				PROVISIONING_PROFILE = "CF0E217D-C9AD-4344-B5BE-D017201DBC46";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
